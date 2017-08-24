@@ -1,0 +1,15 @@
+.box{
+    background: #7DCE94;
+    width: 240px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+.content{
+    width: 200px;
+    height: 100px;
+    margin: 5px;
+    padding: 15px;
+    background: #0E91A1;
+    font-size: 20px;
+    color: #ccc;
+}

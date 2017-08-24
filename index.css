@@ -1,0 +1,20 @@
+.outdiv{
+    width: 520px;
+    height: 220px;
+    background: #617F10;
+    /* overflow: hidden */
+    border: 0 solid #fff;
+    /* border-top-width: 1px; */
+    /* padding-top: 1px */
+}
+.insidediv{
+    width: 500px;
+    height: 200px;
+    background: #3F47CC;
+    /* margin: 10px; */
+    margin-top: 10px;
+    /* margin-left: 10px; */
+
+    /* display: inline-block */
+    /* position: absolute; */
+}

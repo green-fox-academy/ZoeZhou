@@ -1,0 +1,37 @@
+.background{
+    position: relative;
+    width:320px;
+    height: 220px;
+    background: #4285F4;
+    margin-bottom: 5px;
+}
+.content{
+    position: absolute;
+    width: 300px;
+    height: 200px;
+    margin: 10px;
+}
+.top-content{
+    background: #E67676;
+}
+.bottom-content{
+    background: #A9E6E6;
+}
+.text{
+    position: absolute;
+    width: 100px;
+    height: 25px;
+    top: 25%;
+    left: 50%;
+    margin-left: -50px;
+    margin-top: -25px;
+    font-size: 30px;
+    color: #fff;
+    text-align: center;
+}
+.top{
+    top: 25%;
+}
+.bottom{
+    top: 75%;
+}

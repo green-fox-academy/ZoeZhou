@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <div class="info" hidden>
+        <h1>margin collapsing</h1>
+        <p>Margin collapsing occurs in three basic cases:
+            <h2>Adjacent siblings</h2> 
+            The margins of adjacent siblings are collapsed (except when the latter sibling needs to be cleared past floats).
+            <h2>Parent and first/last child</h2> 
+            If there is no border, padding, inline part, block_formatting_context created, or clearance to separate the margin-top of a block from the margin-top of its first child block; or no border, padding, inline content, height, min-height, or max-height to separate the margin-bottom of a block from the margin-bottom of its last child, then those margins collapse. The collapsed margin ends up outside the parent.
+            <h2>Empty blocks</h2>
+            If there is no border, padding, inline content, height, or min-height to separate a block's margin-top from its margin-bottom, then its top and bottom margins collapse.
+        </p>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Model/Mastering_margin_collapsing">jump to mdn</a>
+    </div>
+    <div class="outdiv">
+        <div class="insidediv"></div>
+    </div>
+
+
+</body>
+</html>
