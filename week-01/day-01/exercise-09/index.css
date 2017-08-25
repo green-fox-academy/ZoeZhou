@@ -1,77 +1,63 @@
-*{
+* {
     margin: 0;
     padding: 0;
-}
-.container{
-    width: 500px;
-    height: 400px;
-    background: #F05408;
-}
-.nav-bar{
-    height: 30px;
-    background: #262626;
-    padding-left: 0px;
-}
-.nav-bar li,.question-choice li{
-    list-style-type: none;
-    float: left;
-}
-.nav-bar li a{
-    height:30px;
-    line-height:30px;
-    color:#FFF;
-    margin:0 10px;
-    display:block;
-    text-align:center;
-    text-decoration:none;
-}
-.question-choice{
-    text-align: center;
-}
-.question-choice ul{
-    height: 30px;
-    padding-left: 0px;
-    display: inline-block;
-}
-.question-choice li a{
-    /* height:30px; */
-    line-height:30px;
-    margin:0 5px;
-    padding: 0 10px;
-    color: #000;
-    background: #F9F515;
-    display:block;
-    text-align:center;
-    text-decoration:none;
-}
-.question-title{
-    text-align: center;
-    font-weight: bold;
-    margin: 30px 0 10px 0;
-}
-.tips-area p:nth-child(1){
-    margin-top: 30px;
-    margin-bottom: 5px;
-    
-}
-.tips-area p{
-    padding-left: 35px;
-    font-size: 17px;
-}
-.tips-area p span{
-    display: block;
-    margin-bottom: 5px;
     font-family: Arial, Helvetica, sans-serif;
 }
-.question-choice label{
-    display: inline-block;
-    min-width: 20px;
-    height: 35px;
-    background: #F9F515;
-    margin-right: 10px;
-    line-height: 35px;
-    padding: 0 10px;
+
+nav span {
+    font-size: 17px;
+    font-weight: bold;
+    padding-left: 5px;
 }
-.question-choice label input{
-    display: none;
+
+nav {
+    width: 500px;
+    height: 50px;
+    line-height: 50px;
+    color: #fff;
+    background-color: #000;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    margin-left: 15px;
+}
+
+.content {
+    width: 500px;
+    padding-top: 30px;
+    background-color: #F05408;
+    text-align: center;
+}
+
+.content span {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.answer button {
+    padding: 5px 10px;
+    margin-right: 5px;
+    background-color: #F9F515;
+    border: 0;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+.tips {
+    padding-left: 40px;
+    padding-bottom: 50px;
+    text-align: left;
+}
+
+.tips span {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.tips li {
+    list-style-type: none;
+    margin-bottom: 15px;
 }

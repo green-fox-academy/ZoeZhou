@@ -1,0 +1,25 @@
+h1 {
+    color: #001ACA;
+}
+
+h2 {
+    color: #E59C12;
+}
+
+.ul-food {
+    color: #001ACA;
+    list-style-type: square
+}
+
+.ul-fruits {
+    color: #000;
+    list-style-type: disc;
+}
+
+.ul-fruits li:first-child {
+    color: #AE251F
+}
+
+.ol-vegetables {
+    color: #000;
+}

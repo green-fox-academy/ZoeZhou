@@ -1,0 +1,9 @@
+form input {
+    display: block;
+    margin: 15px 0;
+}
+
+form input:nth-last-child(3) {
+    margin: 0;
+    display: inline-block;
+}

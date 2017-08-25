@@ -1,61 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Exercise_09</title>
+    <title>exercise_09</title>
     <link rel="stylesheet" href="./index.css">
-    <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
 </head>
+
 <body>
-    <div class="container">
-        <div class="header">
-            <ul class="nav-bar">
-                <li><a href="#" style="font-weight: bold">Awsome quiz</a></li>
-                <li><a href="#">mdn</a></li>
-                <li><a href="#">syllabus</a></li>
-                <li><a href="#">epam</a></li>
+    <nav>
+        <span>Awsome quiz</span>
+        <a href="">mdn</a>
+        <a href="">syllabus</a>
+        <a href="">epam</a>
+    </nav>
+    <div class="content">
+        <span>Which country has the 7th biggest land area?</span>
+        <div class="answer">
+            <button>Brazil</button>
+            <button>Saudi Ararbia</button>
+            <button>India</button>
+            <button>Canada</button>
+        </div>
+        <div class="tips">
+            <span>Tips</span>
+            <ul>
+                <li>It is 2,973,190 km2</li>
+                <li>It's total GDP (PPP) is <br/>
+                    $9.489 trillion
+                </li>
+                <li>It is a federal parliamentary <br/>
+                    constitutional republic
+                </li>
+                <li>
+                    They drives on the left
+                </li>
             </ul>
         </div>
-        <div class="content">
-            <div class="question-area">
-                <p class="question-title">
-                    Which country has the 7th biggest land area?
-                </p>
-                <div class="question-choice">
-                    <label for="ans-1">Brazil
-                        <input type="radio" value="Brazil" name="1" id="ans-1">
-                    </label>
-                    <label for="ans-2">Saudi Ararbia
-                        <input type="radio" value="Saudi Ararbia" name="1" id="ans-2">
-                    </label>
-                    <label for="ans-3">India
-                        <input type="radio" value="India" name="1" id="ans-3">
-                    </label>
-                    <label for="ans-4">Canada
-                        <input type="radio" value="Canada" name="1" id="ans-4">
-                    </label>
-                    <!-- <ul>
-                        <li><a href="#">Brazil</a></li>
-                        <li><a href="#">Saudi Ararbia</a></li>
-                        <li><a href="#">India</a></li>
-                        <li><a href="#">Canada</a></li>
-                    </ul> -->
-                </div>
-            </div>
-            <div class="tips-area">
-                <p style="font-weight:bold;font-size:20px">Tips</p>
-                <p><span>It is 2,973,190 km <sup>2</sup></span>
-                    <span>It's total GDP (PPP) is</span> 
-                    <span>$9.489 trillion</span>
-                    <span>It is a federal parliamentary</span>
-                    <span>Constitutional repubic</span>
-                    <span>They drives on the left</span>
-                </p>
-            </div>
-        </div>
     </div>
-    <script src="index.js"></script>
 </body>
+
 </html>
