@@ -1,105 +1,124 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
 
-.clearfix::after{
+.clearfix::after {
     content: '';
     display: block;
     clear: both;
     height: 0;
     visibility: hidden;
 }
-.header,.body-container{
+
+.header,
+.body-container {
     min-width: 600px;
     max-width: 90%;
-    background: #eee;
+    background-color: #eee;
     margin: 0 auto;
 }
-.header{
+
+.header {
     height: 100px;
-    background: #B02AFF;
+    background-color: #B02AFF;
 }
-.nav-left li{
+
+.nav-left li {
     height: 50px;
     width: 80px;
     float: left;
     margin-right: 10px;
     list-style: none;
-    background: #2AEAFF;
+    background-color: #2AEAFF;
     margin-top: 25px;
 }
-.nav-left li:nth-child(1){
+
+.nav-left li:nth-child(1) {
     margin-left: 20px;
 }
-.nav-right li{
+
+.nav-right li {
     height: 50px;
     width: 50px;
     float: right;
     margin-left: 10px;
     list-style: none;
-    background: #2AEAFF;
+    background-color: #2AEAFF;
     margin-top: 25px;
 }
-.nav-right li:nth-child(1){
+
+.nav-right li:nth-child(1) {
     margin-right: 20px;
 }
-.body-container{
+
+.body-container {
     height: 800px;
 }
-.content{
+
+.content {
     height: 800px;
-    background:#FFD62A;
+    background-color: #FFD62A;
     margin-right: 300px;
     overflow: hidden;
 }
-.slidebar{
+
+.slidebar {
     height: 800px;
     width: 300px;
     float: right;
-    background: #51D400;
+    background-color: #51D400;
 }
-.list-div{
+
+.list-div {
     margin-top: 50px;
 }
-.list-div-item{
-    width:250px;
-    height:50px;
+
+.list-div-item {
+    width: 250px;
+    height: 50px;
     margin: 0 auto;
     margin-bottom: 10px;
-    background:#573559;
+    background-color: #573559;
 }
-.slidebar p.text{
+
+.slidebar p.text {
     margin: 0 25px;
     margin-bottom: 20px;
 }
-.content p.text{
+
+.content p.text {
     padding: 50px 20px;
 }
-.content-center .row .red{
+
+.content-center .row .red {
     width: 20%;
     height: 100px;
-    background: #f00;
+    background-color: #f00;
     float: left;
     margin-left: 4%;
     margin-bottom: 4%;
 }
-.content-center .row-bottom .red{
+
+.content-center .row-bottom .red {
     margin-bottom: 0;
 }
-.text-below{
+
+.text-below {
     width: 100%;
 }
-.text-below p.text-left{
+
+.text-below p.text-left {
     float: left;
     width: 44%;
     margin-left: 4%;
-    margin-top:50px;
+    margin-top: 50px;
 }
-.text-below p.text-right{
+
+.text-below p.text-right {
     float: right;
     width: 44%;
     margin-left: 4%;
     margin-right: 4%;
-    margin-top:50px;
+    margin-top: 50px;
 }

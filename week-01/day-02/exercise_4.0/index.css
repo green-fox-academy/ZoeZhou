@@ -3,7 +3,7 @@
     width: 600px;
     height: 600px;
     margin: 0 auto;
-    background: #F05408;
+    background-color: #F05408;
 }
 .middle-box{
     position: absolute;
@@ -16,5 +16,5 @@
     box-shadow: 0 0 0px 2px #fff inset;
     border-radius: 15px;
     opacity: 0.7;
-    background: radial-gradient(#b3693D,#ff783F);
+    background-color: radial-gradient(#b3693D,#ff783F);
 }

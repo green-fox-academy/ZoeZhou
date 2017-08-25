@@ -1,34 +1,38 @@
-.container{
-    width:300px;
-    height: 80px;
-    background: #C76A3D;
-    overflow: hidden;
+.container {
+    width: 300px;
+    background-color: #C76A3D;
 }
-.botton-group{
-    width: 260px;
-    height: 40px;
-    margin: 20px 20px;
+
+.botton-group {
+    padding: 20px;
 }
-.button{
-    width:120px;
+
+.button {
+    width: 120px;
     height: 40px;
-    margin: 0;
-    padding: 0;
-    font-size: 18px;
+    font-size: 20px;
     font-family: Arial, Helvetica, sans-serif;
 }
-.button.cancel{
+
+.button.cancel {
     float: right;
-    border-color:#E8E543;
-    background: -webkit-linear-gradient(left, #A9A60F , #E8E414); /* Safari 5.1 - 6.0 */
-    background: -o-linear-gradient(right, #A9A60F, #E8E414); /* Opera 11.1 - 12.0 */
-    background: -moz-linear-gradient(right, #A9A60F, #E8E414); /* Firefox 3.6 - 15 */
-    background: linear-gradient(to right, #A9A60F , #E8E414); /* 标准的语法（必须放在最后） */
+    border-color: #E8E543;
+    background: -webkit-linear-gradient(left, #A9A60F, #E8E414);
+    /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right, #A9A60F, #E8E414);
+    /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right, #A9A60F, #E8E414);
+    /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right, #A9A60F, #E8E414);
 }
-.button.ok{
+
+.button.ok {
     border-color: #8282CE;
-    background: -webkit-linear-gradient(left, #47478B , #5F5FB9); /* Safari 5.1 - 6.0 */
-    background: -o-linear-gradient(right, #47478B, #5F5FB9); /* Opera 11.1 - 12.0 */
-    background: -moz-linear-gradient(right, #47478B, #5F5FB9); /* Firefox 3.6 - 15 */
-    background: linear-gradient(to right, #47478B , #5F5FB9); /* 标准的语法（必须放在最后） */
+    background: -webkit-linear-gradient(left, #47478B, #5F5FB9);
+    /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(right, #47478B, #5F5FB9);
+    /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(right, #47478B, #5F5FB9);
+    /* Firefox 3.6 - 15 */
+    background: linear-gradient(to right, #47478B, #5F5FB9);
 }

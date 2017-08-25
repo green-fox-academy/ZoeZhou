@@ -1,68 +1,76 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
-.clearfix::after{
+
+.clearfix::after {
     content: '';
     display: block;
     clear: both;
     height: 0;
     visibility: hidden;
 }
-.header{
+
+.header,
+.body-container,
+.footer {
+    min-width: 400px;
+}
+
+.header {
     position: fixed;
     width: 100%;
     height: 100px;
-    background: #B02AFF;
+    background-color: #B02AFF;
 }
-.nav ul{
-    text-align: center;
-    margin-left: 5%;
+
+.nav {
+    padding-left: 50px;
+    padding-top: 25px;
 }
-.nav li{
-    list-style-type: none;
-    float: left;
-}
-.nav ul a{
-    display: block;
-    text-decoration: none;
+
+.nav a {
+    display: inline-block;
     width: 70px;
-    height: 40px;
-    line-height: 40px;
-    margin-right: 15px;
-    margin-top: 30px;
-    background: #2AEAFF;
+    height: 50px;
+    margin-right: 10px;
+    background-color: #2AEAFF;
 }
-.body-container,.footer{
+
+.body-container,
+.footer {
     width: 90%;
     margin: 0 auto;
 }
-.body-container{
-    height: 1500px;
+
+.body-container {
+    height: 1000px;
 }
-.footer{
+
+.footer {
     margin-top: 15px;
     height: 100px;
-    background: #CCCCCC;
+    background-color: #CCCCCC;
 }
-.sidebar{
-    width:30%;
+
+.sidebar {
+    width: 30%;
     height: 100%;
     float: left;
     padding-right: 15px;
     margin-top: 115px;
+    box-sizing: border-box;
 }
-.sidebar div{
-    background: #51D400;
+
+.sidebar div {
+    background-color: #51D400;
     height: 100%;
 }
-.main-content{
-    width:70%;
+
+.main-content {
+    width: 70%;
     height: 100%;
     float: left;
     margin-top: 115px;
-    background: #FFD62A;
-}
-div{
-    box-sizing: border-box;
+    background-color: #FFD62A;
 }

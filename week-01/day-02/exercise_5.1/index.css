@@ -1,12 +1,13 @@
-.container div{
+.container div {
     height: 50px;
     width: 200px;
-    background: #999;
+    background-color: #999;
 }
 
-.container div:nth-child(1){
-    background: #666;
+.container div:nth-child(1) {
+    background-color: #666;
 }
-.container div:nth-child(5){
-    background: #ccc;
+
+.container div:nth-child(5) {
+    background-color: #ccc;
 }

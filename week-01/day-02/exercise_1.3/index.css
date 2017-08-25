@@ -1,17 +1,18 @@
-.item{
-    width:25%;
+.item {
+    width: 25%;
     height: 200px;
-}
-.green{
-    background: #51D400;
     float: right;
 }
-.yellow{
-    width:50%;
-    background: #FFD62A;
-    float: right
+
+.green {
+    background-color: #51D400;
 }
-.purple{
-    background: #B02AFF;
-    float: left;
+
+.yellow {
+    width: 50%;
+    background-color: #FFD62A;
+}
+
+.purple {
+    background-color: #B02AFF;
 }

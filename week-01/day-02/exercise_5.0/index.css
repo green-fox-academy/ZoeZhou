@@ -1,13 +1,18 @@
-.container div{
+.container div {
     height: 50px;
     width: 200px;
 }
-.container div[data-count='10'],.container div[data-count='11']{
-    background: #333;
+
+.container div[data-count='10'],
+.container div[data-count='11'] {
+    background-color: #333;
 }
-.container div[data-count='5'],.container div[data-count='17']{
-    background: #666;
+
+.container div[data-count='5'],
+.container div[data-count='17'] {
+    background-color: #666;
 }
-.container div[data-count='13']{
-    background: #ccc;
+
+.container div[data-count='13'] {
+    background-color: #ccc;
 }

@@ -1,16 +1,20 @@
-.container{
+.container {
     width: 800px;
 }
-.item{
-    height: 100px;
+
+.item {
+    height: 200px;
 }
-.green{
-    background: #51D400;
+
+.green {
+    background-color: #51D400;
 }
-.yellow{
-    height:200px;
-    background: #FFD62A;
+
+.yellow {
+    height: 400px;
+    background-color: #FFD62A;
 }
-.purple{
-    background: #B02AFF;
+
+.purple {
+    background-color: #B02AFF;
 }

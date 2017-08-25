@@ -1,12 +1,14 @@
-*{
+* {
     margin: 0;
 }
-.container div{
+
+.container div {
     height: 50px;
     width: 200px;
-    margin-bottom: 10px;
-    background: #999;
+    margin-top: 10px;
+    background-color: #666;
 }
-.container div:nth-child(5){
-    margin-bottom: 0px;
+
+.container div:nth-child(1) {
+    margin-top: 0px;
 }
