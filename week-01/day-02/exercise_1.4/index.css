@@ -1,0 +1,16 @@
+.container{
+    width: 800px;
+}
+.item{
+    height: 100px;
+}
+.green{
+    background: #51D400;
+}
+.yellow{
+    height:200px;
+    background: #FFD62A;
+}
+.purple{
+    background: #B02AFF;
+}

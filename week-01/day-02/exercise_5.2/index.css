@@ -1,0 +1,21 @@
+.container div{
+    height: 50px;
+    width: 200px;
+    margin-bottom: 10px;
+}
+#div-1{
+    background: #999;
+}
+#div-2{
+    background: #999;
+}
+#div-3{
+    background: #999;
+}
+#div-4{
+    background: #999;
+}
+#div-5{
+    background: #999;
+    margin-bottom: 0;
+}

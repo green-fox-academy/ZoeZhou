@@ -1,0 +1,14 @@
+.item{
+    width:200px;
+    height: 200px;
+    float: left;
+}
+.green{
+    background: #51D400;
+}
+.yellow{
+    background: #FFD62A;
+}
+.purple{
+    background: #B02AFF;
+}

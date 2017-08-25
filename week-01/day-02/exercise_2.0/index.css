@@ -1,0 +1,38 @@
+.container{
+    width:1000px;
+    height: 800px;
+    background: #eee;
+    margin: 0 auto;
+}
+.header{
+    background: #B02AFF;
+    width: 100%;
+    height: 50px;
+}
+.nav ul{
+    padding: 0;
+}
+.nav ul li{
+    list-style-type: none;
+    float: left;
+}
+.nav ul li a{
+    display: block;
+    width: 80px;
+    height: 30px;
+    line-height: 30px;
+    background: #2AEAFF;
+    margin: 10px 0px 10px 20px;
+}
+.content{
+    height: 750px;
+    width: 700px;
+    background: #FFD62A;
+    float: left;
+}
+.sidebar{
+    height: 750px;
+    width:300px;
+    background: #51D400;
+    float: right;
+}
