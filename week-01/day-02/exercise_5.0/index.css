@@ -2,18 +2,12 @@
     height: 50px;
     width: 200px;
 }
-#div-1{
+.container div[data-count='10'],.container div[data-count='11']{
+    background: #333;
+}
+.container div[data-count='5'],.container div[data-count='17']{
     background: #666;
 }
-#div-2{
-    background: #999;
-}
-#div-3{
+.container div[data-count='13']{
     background: #ccc;
-}
-#div-4{
-    background: #666;
-}
-#div-5{
-    background: #999;
 }

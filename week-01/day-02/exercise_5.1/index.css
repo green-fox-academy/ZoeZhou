@@ -1,19 +1,12 @@
 .container div{
     height: 50px;
     width: 200px;
+    background: #999;
 }
-#div-1{
+
+.container div:nth-child(1){
     background: #666;
 }
-#div-2{
-    background: #999;
-}
-#div-3{
-    background: #999;
-}
-#div-4{
-    background: #999;
-}
-#div-5{
+.container div:nth-child(5){
     background: #ccc;
 }
