@@ -10,25 +10,6 @@ div div::after {
     position: absolute;
     top: 10px;
     left: 10px;
+    content: attr(data-count);
     color: #fff;
-}
-
-.container div:nth-child(1)::after {
-    content: '10';
-}
-
-.container div:nth-child(2)::after {
-    content: '5';
-}
-
-.container div:nth-child(3)::after {
-    content: '13';
-}
-
-.container div:nth-child(4)::after {
-    content: '11';
-}
-
-.container div:nth-child(5)::after {
-    content: '17';
 }
