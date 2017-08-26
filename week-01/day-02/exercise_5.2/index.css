@@ -5,10 +5,9 @@
 .container div {
     height: 50px;
     width: 200px;
-    margin-top: 10px;
     background-color: #666;
 }
 
-.container div:nth-child(1) {
-    margin-top: 0px;
+.container div+div{
+    margin-top: 10px;
 }
