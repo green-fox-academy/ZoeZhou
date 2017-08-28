@@ -38,6 +38,7 @@
 .bottom {
     height: 30px;
     line-height: 30px;
+    /* background: url('./imgs/background-nav.png') 0px 0px repeat-x; */
 }
 
 .bottom a {
@@ -72,9 +73,10 @@ input {
 
 #search {
     height: 25px;
-    background: url('./imgs/search.png') center right no-repeat;
+    background: url(./imgs/search.png) 95% 50% no-repeat;
     background-size: 1em;
     margin: 0 5px;
+    padding: 0px 5px;
 }
 
 aside {
@@ -95,6 +97,11 @@ aside {
     margin: 20px 0;
 }
 
+.portal div:nth-child(2) {
+    height: 1px;
+    background-image: linear-gradient(to right, #fff, #999, #fff);
+}
+
 .portal a {
     display: block;
     text-decoration: none;
@@ -108,14 +115,29 @@ aside {
     font-size: 14px;
     font-family: Arial, Helvetica, sans-serif;
     display: block;
-    border-bottom: 1px solid #eee;
+    /* border-bottom: 1px solid #eee; */
     margin: 0 10px;
     padding-bottom: 5px;
+}
+
+aside .portal:nth-last-child(2) {
+    margin-bottom: 5px;
 }
 
 .lan-setting {
     background: url(./imgs/setting.png) no-repeat 110px -3px;
     background-size: 1.5em;
+}
+
+.edit-links a{
+    float: right;
+    padding-left: 15px;
+    margin-bottom: 30px;
+    text-decoration: none;
+    color: #999;
+    font-size: 14px;
+    background: url('./imgs/pencil.png') no-repeat;
+    background-size: 1em;
 }
 
 main {
@@ -145,12 +167,21 @@ main {
     line-height: 20px;
 }
 
+.content-summary div:nth-child(2) {
+    line-height: 20px;
+}
+
+.content-summary div:nth-child(2) p {
+    margin: 10px 0;
+}
+
 .content-summary .content-img {
     width: 270px;
     float: right;
     border: 1px solid #ccc;
-    background-color: #fff;
+    background-color: #F8F9FA;
     padding: 10px;
+    margin-left: 10px;
 }
 
 .content-img h2 {
@@ -168,9 +199,17 @@ main {
     text-align: center;
 }
 
+.content-img table {
+    font-size: 12px;
+}
+
 .content-img table th {
     vertical-align: initial;
     text-align: left;
+}
+
+.content article {
+    padding: 10px 0;
 }
 
 .content-nav {
@@ -178,6 +217,7 @@ main {
     margin: 10px 0;
     width: 150px;
     border: 2px solid #999;
+    background-color: #F8F9FA;
 }
 
 .content-nav li {
@@ -206,6 +246,7 @@ main {
     margin: 10px 0;
     line-height: 20px;
     font-size: 14px;
+    padding: 10px 0;
 }
 
 .content li {
@@ -217,19 +258,32 @@ main {
 
 .bottom-table {
     margin: 0 auto;
-    width: 700px;
+    /* width: 700px; */
 }
 
 .bottom-table table {
     border: 1px solid #000;
-    width: 700px;
+    /* width: 700px; */
+    width: 100%;
+}
+
+.bottom-table table td {
+    padding-left: 10px;
+}
+
+.bottom-table table:nth-child(2) td {
+    background: #fff;
+}
+
+.bottom-table table:nth-child(2) th {
+    width: 150px;
 }
 
 .bottom-table table th {
     background-color: #CCCCFE;
     color: #0D3F96;
-    width: 150px;
-    padding-right: 20px;
+    width: 170px;
+    padding: 5px 10px 5px 10px;
     text-align: right;
 }
 
@@ -257,6 +311,8 @@ main {
 .bottom-table .blue {
     background-color: #E6E5FF;
     color: #2C448C;
+    text-align: right;
+    padding-right: 10px;
 }
 
 .bottom-table .light-blue {
@@ -264,15 +320,14 @@ main {
 }
 
 .links {
-    width: 700px;
     border: 1px solid #000;
     box-sizing: border-box;
-    margin-top: 30px;
+    margin-top: 20px;
+    padding: 10px;
 }
 
 .links a {
     display: inline-block;
-    margin: 5px 0;
     padding: 0 10px;
     text-decoration: none;
     border-right: 1px solid #ccc;
