@@ -1,0 +1,279 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.clearfix::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.header {
+    margin-left: 160px;
+    font-size: 14px;
+    border-bottom: 1px solid #D5EBFB;
+}
+
+.top {
+    margin: 5px 0 10px 0;
+}
+
+.top a {
+    float: right;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+.top a:last-child {
+    background-image: url(./imgs/login.png);
+    background-repeat: no-repeat;
+    background-size: 1em;
+    padding-left: 20px;
+    color: #666;
+    font-size: 14px;
+}
+
+.bottom {
+    height: 30px;
+    line-height: 30px;
+}
+
+.bottom a {
+    text-decoration: none;
+    padding: 0 5px;
+}
+
+.bottom a:nth-child(1),
+.bottom a:nth-child(4) {
+    border-bottom: none;
+    color: #000;
+}
+
+.bottom a:nth-child(2),
+a:nth-child(6) {
+    border-left: 1px solid #D5EBFB;
+    border-right: 1px solid #D5EBFB;
+}
+
+.bottom a+a {
+    border-left: 1px solid #D5EBFB;
+}
+
+.bottom-nav-left a {
+    float: left;
+}
+
+.bottom-nav-right a,
+input {
+    float: right;
+}
+
+#search {
+    height: 25px;
+    background: url('./imgs/search.png') center right no-repeat;
+    background-size: 1em;
+    margin: 0 5px;
+}
+
+aside {
+    width: 150px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #F6F6F6;
+    padding: 5px;
+    border-right: 1px solid #D5EBFB;
+}
+
+.logo {
+    text-align: center;
+}
+
+.portal {
+    margin: 20px 0;
+}
+
+.portal a {
+    display: block;
+    text-decoration: none;
+    margin: 10px 0 10px 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+}
+
+.portal span {
+    color: #000;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    display: block;
+    border-bottom: 1px solid #eee;
+    margin: 0 10px;
+    padding-bottom: 5px;
+}
+
+.lan-setting {
+    background: url(./imgs/setting.png) no-repeat 110px -3px;
+    background-size: 1.5em;
+}
+
+main {
+    margin-left: 160px;
+    padding: 20px;
+}
+
+.abstract h1 {
+    padding-bottom: 5px;
+    border-bottom: 2px solid #999;
+}
+
+.copyright {
+    display: block;
+    margin: 10px 0 30px 0;
+    font-size: 14px;
+}
+
+.samename {
+    display: block;
+    font-style: italic;
+    margin-bottom: 20px;
+    text-indent: 30px;
+}
+
+.content-summary>div:first-child {
+    line-height: 20px;
+}
+
+.content-summary .content-img {
+    width: 270px;
+    float: right;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    padding: 10px;
+}
+
+.content-img h2 {
+    text-align: center;
+    margin: 5px 0;
+}
+
+.content-img>div {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.content-img span {
+    display: block;
+    text-align: center;
+}
+
+.content-img table th {
+    vertical-align: initial;
+    text-align: left;
+}
+
+.content-nav {
+    padding: 10px;
+    margin: 10px 0;
+    width: 150px;
+    border: 2px solid #999;
+}
+
+.content-nav li {
+    list-style-position: inside;
+    margin: 5px;
+}
+
+.content-nav li li {
+    list-style-type: none;
+    text-indent: 30px;
+    font-size: 0.9em;
+}
+
+.content h2 {
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 5px;
+}
+
+.content h2 a {
+    font-size: 12px;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.content {
+    margin: 10px 0;
+    line-height: 20px;
+    font-size: 14px;
+}
+
+.content li {
+    min-width: 500px;
+    width: 40%;
+    float: left;
+    margin: 10px;
+}
+
+.bottom-table {
+    margin: 0 auto;
+    width: 700px;
+}
+
+.bottom-table table {
+    border: 1px solid #000;
+    width: 700px;
+}
+
+.bottom-table table th {
+    background-color: #CCCCFE;
+    color: #0D3F96;
+    width: 150px;
+    padding-right: 20px;
+    text-align: right;
+}
+
+.bottom-table table tr:first-child th {
+    text-align: center;
+}
+
+.bottom-table table tr:first-child {
+    background-color: #CCCCFE;
+}
+
+.bottom-table table tr:first-child span:first-child {
+    float: left;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.bottom-table table tr:first-child a {
+    float: right;
+    font-size: 14px;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.bottom-table .blue {
+    background-color: #E6E5FF;
+    color: #2C448C;
+}
+
+.bottom-table .light-blue {
+    background-color: #F7F7F7;
+}
+
+.links {
+    width: 700px;
+    border: 1px solid #000;
+    box-sizing: border-box;
+    margin-top: 30px;
+}
+
+.links a {
+    display: inline-block;
+    margin: 5px 0;
+    padding: 0 10px;
+    text-decoration: none;
+    border-right: 1px solid #ccc;
+}
