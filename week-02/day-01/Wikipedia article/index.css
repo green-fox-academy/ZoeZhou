@@ -13,7 +13,6 @@
 .header {
     margin-left: 160px;
     font-size: 14px;
-    border-bottom: 1px solid #D5EBFB;
 }
 
 .top {
@@ -35,31 +34,53 @@
     font-size: 14px;
 }
 
+.bottom-nav-left {
+    position: absolute;
+    bottom: -1px;
+}
+
+.bottom-nav-left>a:first-child {
+    background: #fff;
+}
+
+.bottom-nav-right {
+    position: absolute;
+    bottom: -1px;
+    right: 0;
+}
+
+.bottom-nav-right>a:nth-child(4) {
+    background: #fff;
+}
+
 .bottom {
-    height: 30px;
-    line-height: 30px;
-    /* background: url('./imgs/background-nav.png') 0px 0px repeat-x; */
+    height: 40px;
+    line-height: 50px;
+    position: relative;
+    background: url('./imgs/nav-background.png') repeat-x 0 2px;
 }
 
 .bottom a {
     text-decoration: none;
     padding: 0 5px;
+    height: 40px;
 }
 
-.bottom a:nth-child(1),
-.bottom a:nth-child(4) {
-    border-bottom: none;
-    color: #000;
+.bottom a:nth-child(1) {
+    border-left: 1px solid;
+    border-image: linear-gradient(transparent, #A7D7F9)0 100;
 }
 
 .bottom a:nth-child(2),
 a:nth-child(6) {
-    border-left: 1px solid #D5EBFB;
-    border-right: 1px solid #D5EBFB;
+    border-left: 1px solid;
+    border-right: 1px solid;
+    border-image: linear-gradient(transparent, #A7D7F9)0 100;
 }
 
 .bottom a+a {
-    border-left: 1px solid #D5EBFB;
+    border-left: 1px solid;
+    border-image: linear-gradient(transparent, #A7D7F9)0 100;
 }
 
 .bottom-nav-left a {
@@ -73,10 +94,12 @@ input {
 
 #search {
     height: 25px;
+    width: 250px;
     background: url(./imgs/search.png) 95% 50% no-repeat;
     background-size: 1em;
-    margin: 0 5px;
+    margin: 10px 5px 0 5px;
     padding: 0px 5px;
+    border: 1px solid #A7D7F9;
 }
 
 aside {
@@ -86,7 +109,6 @@ aside {
     left: 0;
     background-color: #F6F6F6;
     padding: 5px;
-    border-right: 1px solid #D5EBFB;
 }
 
 .logo {
@@ -129,7 +151,7 @@ aside .portal:nth-last-child(2) {
     background-size: 1.5em;
 }
 
-.edit-links a{
+.edit-links a {
     float: right;
     padding-left: 15px;
     margin-bottom: 30px;
@@ -143,6 +165,7 @@ aside .portal:nth-last-child(2) {
 main {
     margin-left: 160px;
     padding: 20px;
+    border: 1px solid #a7d7f9;
 }
 
 .abstract h1 {
@@ -177,11 +200,18 @@ main {
 
 .content-summary .content-img {
     width: 270px;
-    float: right;
     border: 1px solid #ccc;
     background-color: #F8F9FA;
+    box-sizing: border-box;
     padding: 10px;
-    margin-left: 10px;
+    margin: 0 0 20px 20px;
+}
+
+.content-img-cotainer {
+    float: right;
+    position: relative;
+    z-index: 2;
+    background: #fff;
 }
 
 .content-img h2 {
