@@ -137,7 +137,6 @@ aside {
     font-size: 14px;
     font-family: Arial, Helvetica, sans-serif;
     display: block;
-    /* border-bottom: 1px solid #eee; */
     margin: 0 10px;
     padding-bottom: 5px;
 }
@@ -279,21 +278,23 @@ main {
     padding: 10px 0;
 }
 
-.content li {
-    min-width: 500px;
-    width: 40%;
+.content .references-container {
     float: left;
-    margin: 10px;
+    min-width: 400px;
+    width: 45%;
+    margin: 0 10px;
+}
+
+.content li {
+    margin: 5px;
 }
 
 .bottom-table {
     margin: 0 auto;
-    /* width: 700px; */
 }
 
 .bottom-table table {
     border: 1px solid #000;
-    /* width: 700px; */
     width: 100%;
 }
 
