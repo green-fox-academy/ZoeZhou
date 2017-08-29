@@ -55,8 +55,6 @@ console.log( !(j%3) || !(j%5) );
 
 var k = 'Apple';
 // fill the k variable with its content 4 times
+k = k+k+k+k
 
-console.log(k);
-console.log(k);
-console.log(k);
 console.log(k);
