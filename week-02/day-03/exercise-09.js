@@ -1,6 +1,6 @@
-function draw(){
-    for(var i=0;i<6;i++){
-        if(i===0 || i===5){
+function draw(lineCount){
+    for(var i=0;i<lineCount;i++){
+        if(i===0 || i===lineCount-1){
             console.log("%%%%%%");
         }
         else{
@@ -8,4 +8,4 @@ function draw(){
         }
     }
 }
-draw();
+draw(7);
