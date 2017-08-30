@@ -1,24 +1,33 @@
-function draw(){
-    for(var i=0;i<7;i++){
+function draw(lineCount){
+    var midNum = Math.ceil(lineCount/2);
+    for(var i=0;i<lineCount;i++){
         var stars, startPoint, str, j;
-        if(i<4){
+        if(i<midNum){
             stars = 2*i +1;
-            startPoint = 3-i;
-            str = [" "," "," "," "," "," "," "];
-            for(j=startPoint;j<startPoint+stars;j++){
+            startPoint = Math.floor(lineCount/2)-i;
+            if(lineCount%2===0) startPoint = Math.floor(lineCount/2)-i-1;
+            str = [];
+            for(var k=0;k<startPoint;k++){
+                str[k] = " ";
+            }
+            for(var j=startPoint;j<startPoint+stars;j++){
                 str[j] = "*";
             }
             console.log(str.join(''));
         }
         else{
-            stars = 5 - (i-4)*2;
-            startPoint = i-3;
-            str = [" "," "," "," "," "," "," "];
-            for(j=startPoint;j<startPoint+stars;j++){
+            stars = (2*midNum-1) - 2*(i+1-midNum);
+            if(lineCount%2===0) stars = (2*midNum-1) - 2*(i-midNum);
+            startPoint = i-Math.floor(lineCount/2);
+            str = [];
+            for(var k=0;k<startPoint;k++){
+                str[k] = " ";
+            }
+            for(var j=startPoint;j<startPoint+stars;j++){
                 str[j] = "*";
             }
             console.log(str.join(''));
         }
     }
 }
-draw();
+draw(10);
