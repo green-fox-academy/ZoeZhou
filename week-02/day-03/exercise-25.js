@@ -1,5 +1,12 @@
 var animals = ["dog", "cat", "kitten"];
-animals = animals.map(function(value){
+
+animalsPlusS = animals.map(function(value){
     return value + 's';
 });
+
+animals.forEach(function(value,index,array){
+    array[index] = value+"s";
+})
+console.log(animalsPlusS);
+console.log("*********************************************");
 console.log(animals);
