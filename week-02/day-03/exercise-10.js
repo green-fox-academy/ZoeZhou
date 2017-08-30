@@ -1,14 +1,12 @@
-function draw(){
-    for(var i=0;i<6;i++){
-        if(i===0 || i===5){
-            console.log("%%%%%%");
+function draw(lineCount){
+    for(var i=0;i<lineCount;i++){
+        if(i===0 || i===lineCount-1){
+            console.log("%".repeat(lineCount));
         }
         else{
-            var str = "%    %";
-            str = str.split('');
-            str[i] = "%";
-            console.log(str.join(''));
+            
+            console.log("%"+" ".repeat(i-1) + "%" +" ".repeat(lineCount-2-i) + "%" );
         }
     }
 }
-draw();
+draw(15);

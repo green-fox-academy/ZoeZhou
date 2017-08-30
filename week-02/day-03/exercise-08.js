@@ -1,3 +1,4 @@
+//bad solution
 // function draw(lineCount){
 //     var midNum = Math.ceil(lineCount/2);
 //     for(var i=0;i<lineCount;i++){
@@ -45,4 +46,4 @@ function draw(lineCount){
         console.log(" ".repeat(midNum-i-1) + "*".repeat(2*i+1));
     }
 }
-draw(6)
+draw(7)

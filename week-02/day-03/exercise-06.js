@@ -1,8 +1,8 @@
-function draw() {
+function draw(lineCount) {
     str = [];
-    for (var i = 0; i < 4; i++) {
+    for (var i = 0; i < lineCount; i++) {
         str.push("*");
         console.log(str.join(""));
     }
 }
-draw();
+draw(4);

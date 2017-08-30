@@ -1,5 +1,5 @@
-function draw(){
-    for (var i=0;i<12;i++){
+function draw(lineCount){
+    for (var i=0;i<lineCount;i++){
         if ((i+1)%2===0){
             console.log(" % % % %");
         }else{
@@ -7,4 +7,4 @@ function draw(){
         }
     }
 }
-draw();
+draw(12);

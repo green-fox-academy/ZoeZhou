@@ -16,4 +16,4 @@ function draw(len){
     }
 }
 
-draw(5);
+draw(4);

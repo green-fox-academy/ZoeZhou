@@ -8,4 +8,4 @@ function draw(lineCount){
         }
     }
 }
-draw(7);
+draw(6);
