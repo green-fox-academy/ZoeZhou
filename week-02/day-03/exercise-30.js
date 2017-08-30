@@ -8,3 +8,9 @@ for(var i=0;i<(aj.length-1)/2;i++){
     aj[aj.length-i-1] = temp;
 }
 console.log(aj);
+var temp = [];
+for(var i=aj.length-1;i>=0;i--){
+    temp.push(aj[i]);
+}
+aj = temp;
+console.log(aj);
