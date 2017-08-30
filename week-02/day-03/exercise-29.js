@@ -13,4 +13,4 @@ function draw(num) {
         console.log(arr[index]);
     })
 }
-draw(5);
+draw(7);
