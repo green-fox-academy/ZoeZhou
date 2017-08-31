@@ -1,5 +1,5 @@
-function appendS(str){
-    return str + 's';
+function appendS(str) {
+	return str + 's';
 }
 
 var am = 'dog';
