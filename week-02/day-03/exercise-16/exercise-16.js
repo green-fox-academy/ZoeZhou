@@ -1,12 +1,10 @@
 'use strict';
 function factorio(arg) {
-	var arr = [1];
+	var sum = 1;
 	for (var i = 2; i <= arg; i++) {
-		if (arg % i === 0) {
-			arr.push(i);
-		}
+		sum *= i;
 	}
-	return arr;
+	return sum;
 }
 
 console.log(factorio(15));
