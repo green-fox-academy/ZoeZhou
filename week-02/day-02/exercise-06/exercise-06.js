@@ -1,5 +1,10 @@
-var workdays1 = 6 * 17 * 5;
-var workdays2 = (6 * 17 * 7) / (17 * 52) * 100 + "%";
+var dailyHours = 6;
+var semesterLength = 17;
+var workingDays = 5;
+var weeklyWorkHours = 52;
+
+var workdays1 = dailyHours * semesterLength * workingDays;
+var workdays2 = (dailyHours * semesterLength * workingDays) / (semesterLength * weeklyWorkHours) * 100 + "%";
 
 'use strict';
 console.log(workdays1);
