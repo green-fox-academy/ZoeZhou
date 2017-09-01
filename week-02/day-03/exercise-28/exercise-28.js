@@ -1,3 +1,4 @@
+'use strict';
 var ai = [3, 4, 5, 6, 7];
 var sum1 = ai.reduce(function (pre, next) {
 	return pre + next;

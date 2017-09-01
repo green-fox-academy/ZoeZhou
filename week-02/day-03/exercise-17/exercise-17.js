@@ -1,14 +1,14 @@
-function printer() {
-	// solution - 1
-	// for (var i = 0; i < arguments.length; i++) {
-	// 	console.log(arguments[i]);
-	// }
-
-	// solution - 2
+'use strict';
+function printer1() {
 	var argsArray = Array.prototype.slice.call(arguments);  //turn arguments to a real array
 	argsArray.forEach(function (value) {
 		console.log(value);
 	})
 }
+function printer2() {
+	for (var i = 0; i < arguments.length; i++) {
+		console.log(arguments[i]);
+	}
+}
 
-printer(1, 2, 3, 4, 5);
+printer1(1, 2, 3, 4, 5);

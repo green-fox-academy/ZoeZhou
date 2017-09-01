@@ -1,3 +1,4 @@
+'use strict';
 function appendS(str) {
 	return str + 's';
 }

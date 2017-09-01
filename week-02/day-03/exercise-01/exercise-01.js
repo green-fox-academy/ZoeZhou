@@ -6,7 +6,7 @@ if (a % 2 === 0) {
 }
 
 console.log(out);
-
+'use strict';
 var b = 13;
 var out2 = '';
 // if b is between 10 and 20 set out2 to "Sweet!"

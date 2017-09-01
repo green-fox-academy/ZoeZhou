@@ -1,3 +1,4 @@
+'use strict';
 function draw(lineCount) {
 	str = [];
 	for (var i = 0; i < lineCount; i++) {

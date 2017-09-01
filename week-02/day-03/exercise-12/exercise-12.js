@@ -1,3 +1,4 @@
+'use strict';
 function doubling(arg) {
 	return arg * 2;
 }

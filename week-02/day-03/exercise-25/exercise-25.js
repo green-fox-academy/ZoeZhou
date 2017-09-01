@@ -1,3 +1,4 @@
+'use strict';
 var animals = ["dog", "cat", "kitten"];
 
 animalsPlusS = animals.map(function (value) {

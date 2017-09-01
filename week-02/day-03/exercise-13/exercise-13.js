@@ -1,3 +1,4 @@
+'use strict';
 function greet(arg) {
 	arg = arg || "guest";
 	return 'Gerrtings, dear ' + arg;

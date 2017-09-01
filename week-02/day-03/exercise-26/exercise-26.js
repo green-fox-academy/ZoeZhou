@@ -1,3 +1,4 @@
+'use strict';
 var ag = ['Gin', 'Whiskey', 'Wine', 'Beer'];
 agRepet = ag.map(function (value) {
 	return value.repeat(2);
