@@ -1,3 +1,4 @@
+'use strict';
 var height = 100;
 var len = 20;
 var width = 30;

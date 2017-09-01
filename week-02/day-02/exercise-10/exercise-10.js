@@ -1,3 +1,4 @@
+'use strict';
 var obj = {
   name: 'Zoe_Zhou',
   age: 21,

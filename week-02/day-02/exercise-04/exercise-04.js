@@ -1,3 +1,4 @@
+'use strict';
 var zoe = {
     name: "Zoe_Zhou",
     age: 21,

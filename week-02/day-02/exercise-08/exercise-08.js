@@ -1,3 +1,4 @@
+'use strict';
 var a = 123;
 var b = 526;
 a = b - a;

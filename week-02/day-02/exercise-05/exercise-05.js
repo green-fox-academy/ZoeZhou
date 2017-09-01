@@ -1,3 +1,4 @@
+'use strict';
 console.log(13 + 22);
 console.log(13 - 22);
 console.log(13 * 22);

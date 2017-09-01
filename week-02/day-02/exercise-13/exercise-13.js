@@ -1,3 +1,4 @@
+'use strict';
 var currentHours = 14;
 var currentMinutes = 34;
 var currentSeconds = 42;
