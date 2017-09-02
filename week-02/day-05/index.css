@@ -15,8 +15,6 @@
     overflow: auto;
 }
 
-
-
 body {
     background-color: #ccc;
     height: 600px;
@@ -73,7 +71,7 @@ body {
     position: absolute;
     bottom: 15px;
     width: 780px;
-    background-color: rgba(0,0,0,0.6);
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
 .description span {
@@ -110,15 +108,15 @@ body {
     height: 80px;
 }
 
-.popup:hover::before{
+.popup:hover::before {
     content: attr(title);
     display: block;
     line-height: 20px;
     min-height: 20px;
-    position: absolute; 
+    position: absolute;
     margin-bottom: -10px;
     bottom: 100%;
-    padding: 5px; 
+    padding: 5px;
     background-color: #000;
     border-radius: 10px;
     color: #fff;
