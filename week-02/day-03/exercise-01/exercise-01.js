@@ -1,3 +1,4 @@
+'use strict';
 var a = 24;
 var out = 0;
 // if a is even increment out by one
@@ -6,7 +7,6 @@ if (a % 2 === 0) {
 }
 
 console.log(out);
-'use strict';
 var b = 13;
 var out2 = '';
 // if b is between 10 and 20 set out2 to "Sweet!"
