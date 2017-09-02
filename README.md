@@ -1,2 +1,2 @@
-# Zoe_Zhou_EPAM-JSA
+# ZoeZhou
 EPAM javascript Academy
