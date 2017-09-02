@@ -19,7 +19,7 @@ function draw2(num) {
 	for (var i = 0; i < num; i++) {
 		var line = new Array(num).fill(0);
 		line[num - 1 - i] = 1;
-		console.log(line);
+		console.log(line.join(' '));
 	}
 }
 
