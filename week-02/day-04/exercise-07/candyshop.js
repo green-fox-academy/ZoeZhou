@@ -1,6 +1,6 @@
 'use strict';
 
-var shop_items = ["Cupcake", 2, "Brownie", false]
+var shop_items = ['Cupcake', 2, 'Brownie', false]
 
 // Accidentally we added "2" and "false" to the array. 
 // Your task is to change from "2" to "Croissant" and change from "false" to "Ice cream"
@@ -8,10 +8,10 @@ var shop_items = ["Cupcake", 2, "Brownie", false]
 
 shop_items.forEach(function(value,index,array) {
   if(value === 2){
-    array[index] = "Croissant";
+    array[index] = 'Croissant';
   }
   if(value === false){
-    array[index] = "Ice cream";
+    array[index] = 'Ice cream';
   }
 }, this);
 

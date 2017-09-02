@@ -12,8 +12,8 @@ ai.map(function (value) {
 	sum3 += value;
 })
 console.log(sum1);
-console.log("*************************");
+console.log('*************************');
 console.log(sum2);
-console.log("*************************");
+console.log('*************************');
 console.log(sum3);
-console.log("*************************");
+console.log('*************************');

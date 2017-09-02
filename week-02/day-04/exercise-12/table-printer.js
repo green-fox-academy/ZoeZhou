@@ -23,39 +23,44 @@ var ingredients = [
 	{ 'lime juice': 10, 'needs_cooling': true },
 	{ 'soda': 100, 'needs_cooling': true }
 ];
-function drawTable(obj){
-  var numIngredient = 12;
-  var numCooling = 15;
-  var numStock = 10;
+function drawTable(obj) {
+	var numIngredient = 12;
+	var numCooling = 15;
+	var numStock = 10;
 	var arrIngredient = [];
 	var arrNeedsCooling = [];
 	var arrInStock = [];
-  obj.forEach(function(value,index,array){
-		for(var i in value){
-			if(i !== 'needs_cooling'){
+	obj.forEach(function (value, index, array) {
+		for (var i in value) {
+			if (i !== 'needs_cooling') {
 				arrIngredient.push(i);
-				arrInStock.push(value[i]==0?"-":'' + value[i]);
-				if(i.length+2 > numIngredient){
-					numIngredient = i.length+2;
+				arrInStock.push(value[i] == 0 ? '-' : '' + value[i]);
+				if (i.length + 2 > numIngredient) {
+					numIngredient = i.length + 2;
 				}
-				if(('' + value[i]).length > numStock){
+				if (('' + value[i]).length > numStock) {
 					numStock = ('' + value[i]).length + 2;
 				}
-			}else{
-				arrNeedsCooling.push(value[i]?"Yes":"No");
+			} else {
+				arrNeedsCooling.push(value[i] ? 'Yes' : 'No');
 			}
 		}
 	})
-	console.log("+" + "-".repeat(numIngredient) + "+" + "-".repeat(numCooling) + "+" + "-".repeat(numStock) + "+");
-	console.log("| Ingredient" + " ".repeat(numIngredient-11) + "| Needs cooling" + " ".repeat(numCooling-14) 
-		+ "| In stock" + " ".repeat(numStock - 9) + "|");
-	console.log("+" + "-".repeat(numIngredient) + "+" + "-".repeat(numCooling) + "+" + "-".repeat(numStock) + "+");
-		
-	for(var i=0;i<arrIngredient.length;i++){
-		console.log("| " + arrIngredient[i] + " ".repeat(numIngredient-arrIngredient[i].length-1) + "| " + arrNeedsCooling[i] + " ".repeat(numCooling-arrNeedsCooling[i].length-1) 
-		+ "| " + arrInStock[i] + " ".repeat(numStock - arrInStock[i].length - 1) + "|");
-		
+	console.log('+' + '-'.repeat(numIngredient) + '+' + '-'.repeat(numCooling) + '+' + '-'.repeat(numStock) + '+');
+	console.log(
+		'| Ingredient' + ' '.repeat(numIngredient - 11) + '| Needs cooling' + ' '.repeat(numCooling - 14) +
+		'| In stock' + ' '.repeat(numStock - 9) + '|'
+	);
+	console.log('+' + '-'.repeat(numIngredient) + '+' + '-'.repeat(numCooling) + '+' + '-'.repeat(numStock) + '+');
+
+	for (var i = 0; i < arrIngredient.length; i++) {
+		console.log(
+			'| ' + arrIngredient[i] + ' '.repeat(numIngredient - arrIngredient[i].length - 1) + '| ' +
+			arrNeedsCooling[i] + ' '.repeat(numCooling - arrNeedsCooling[i].length - 1) +
+			'| ' + arrInStock[i] + ' '.repeat(numStock - arrInStock[i].length - 1) + '|'
+		);
+
 	}
-	console.log("+" + "-".repeat(numIngredient) + "+" + "-".repeat(numCooling) + "+" + "-".repeat(numStock) + "+");
+	console.log('+' + '-'.repeat(numIngredient) + '+' + '-'.repeat(numCooling) + '+' + '-'.repeat(numStock) + '+');
 }
 drawTable(ingredients)

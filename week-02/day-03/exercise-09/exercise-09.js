@@ -18,7 +18,7 @@ function draw(lineCount) {
 			console.log(symbol.repeat(lineCount));
 		}
 		else {
-			console.log(symbol + " ".repeat(lineCount-2) + symbol);
+			console.log(symbol + ' '.repeat(lineCount-2) + symbol);
 		}
 	}
 }

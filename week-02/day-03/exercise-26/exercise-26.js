@@ -7,5 +7,5 @@ ag.forEach(function (value, index, array) {
 	array[index] = value.repeat(2);
 })
 console.log(agRepet);
-console.log("*********************************");
+console.log('*********************************');
 console.log(ag);

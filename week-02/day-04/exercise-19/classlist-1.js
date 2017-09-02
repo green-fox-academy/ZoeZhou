@@ -1,11 +1,11 @@
 var paragraphs = document.getElementsByTagName('p');
-if(paragraphs[2].className === 'cat'){
+if (paragraphs[2].className === 'cat') {
   alert('YEAH CAT!')
 }
-if(paragraphs[3].className === 'dolphin'){
+if (paragraphs[3].className === 'dolphin') {
   paragraphs[0].innerText = 'pear';
 }
-if(paragraphs[0].className === 'apple'){
+if (paragraphs[0].className === 'apple') {
   paragraphs[2].innerText = 'dog';
 }
 

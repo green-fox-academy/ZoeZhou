@@ -1,4 +1,4 @@
 'use strict';
-console.log("Hello, Zoe");
-console.log("Hello, Jerry");
-console.log("Hello, Alex");
+console.log('Hello, Zoe');
+console.log('Hello, Jerry');
+console.log('Hello, Alex');

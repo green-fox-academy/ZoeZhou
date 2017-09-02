@@ -1,7 +1,7 @@
 'use strict';
 function greet(arg) {
 	if (arg === undefined) {
-		arg = "guest";
+		arg = 'guest';
 	}
 	return 'Gerrtings, dear ' + arg;
 }

@@ -30,7 +30,7 @@ var planetData = [
 ];
 var newLi;
 var len = planetData.length;
-for(var i=0;i<len;i++){
+for (var i = 0; i < len; i++) {
   newLi = document.createElement('li');
   newLi.className = planetData[i].category;
   newLi.innerText = planetData[i].content + '\nasteroid: ' + planetData[i].asteroid;

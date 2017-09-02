@@ -5,7 +5,7 @@
 var numbers = [1,2,3,4,5,6,8];
 
 if(numbers.indexOf(7) !== -1){
-  console.log("Hoorray!");
+  console.log('Hoorray!');
 }else{
-  console.log("Noooooo");
+  console.log('Noooooo');
 }

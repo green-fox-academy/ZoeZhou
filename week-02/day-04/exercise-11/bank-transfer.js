@@ -37,9 +37,9 @@ function transferBalance(formAccountNumber, toAccountNumber, balance){
   }
   formAccount.balance -= balance;
   toAccount.balance += balance;
-  return "transfer " + balance + " form " + formAccount.client_name + " to " + toAccount.client_name;
+  return 'transfer ' + balance + ' form ' + formAccount.client_name + ' to ' + toAccount.client_name;
 }
 console.log(nameAndBalance(accounts));
-console.log("before transfer:" + accounts[0].balance + "  " + accounts[1].balance);
+console.log('before transfer:' + accounts[0].balance + '  ' + accounts[1].balance);
 console.log(transferBalance(11234543,43546731,1000));
-console.log("after transfer:" + accounts[0].balance + "  " + accounts[1].balance);
+console.log('after transfer:' + accounts[0].balance + '  ' + accounts[1].balance);

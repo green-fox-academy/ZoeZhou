@@ -1,5 +1,5 @@
 var button = document.getElementsByTagName('button')[0];
-button.addEventListener('click',function(){
+button.addEventListener('click', function () {
   var sum = 0;
   var lists = document.getElementsByTagName('li');
   sum = lists.length;
