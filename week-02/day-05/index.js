@@ -48,9 +48,37 @@ var mockData = [
     When the block ends, the indent returns to the previous indent level. 
     The indent level applies to both code and comments throughout the block. (See the example in 4.1.2 Nonempty blocks: K&R style).`,
     src: './imgs/08.jpg'
+  },
+  {
+    title: `Block indentation: +2 spaces`,
+    description: `Each time a new block or block-like construct is opened, the indent increases by two spaces. 
+    When the block ends, the indent returns to the previous indent level. 
+    The indent level applies to both code and comments throughout the block. (See the example in 4.1.2 Nonempty blocks: K&R style).`,
+    src: './imgs/09.jpg'
+  },
+  {
+    title: 'Braces are used for all control structures',
+    description: `Braces are required for all control structures (i.e. if, else, for, do, while, as well as any others), 
+    even if the body contains only a single statement. The first statement of a non-empty block must begin on its own line.`,
+    src: './imgs/10.jpg'
+  },
+  {
+    title: `Block indentation: +2 spaces`,
+    description: `Each time a new block or block-like construct is opened, the indent increases by two spaces. 
+    When the block ends, the indent returns to the previous indent level. 
+    The indent level applies to both code and comments throughout the block. (See the example in 4.1.2 Nonempty blocks: K&R style).`,
+    src: './imgs/09.jpg'
+  },
+  {
+    title: 'Braces are used for all control structures',
+    description: `Braces are required for all control structures (i.e. if, else, for, do, while, as well as any others), 
+    even if the body contains only a single statement. The first statement of a non-empty block must begin on its own line.`,
+    src: './imgs/10.jpg'
   }
+
 ];
 var slideIndex = 1;
+var thumbnailIndex = 8;
 var thumbnailImgsContainer; //span include img
 var thumbnailImgs; //imgs
 createImgs();
@@ -65,8 +93,8 @@ function createImgs() {
     var img = document.createElement('img');
     var description = document.createElement('p');
     var title = document.createElement('span');
-    var prev = document.createElement('a');
-    var next = document.createElement('a');
+    var prev = document.createElement('span');
+    var next = document.createElement('span');
     title.innerText = mockData[i].title;
     description.appendChild(title);
     description.innerHTML += mockData[i].description;
@@ -91,47 +119,88 @@ function createImgs() {
 function createThumbNail() {
   var thumbnail = document.getElementsByClassName('thumbnail')[0];
   var length = mockData.length;
+  var prev = document.getElementsByClassName('prev-thumbnail')[0];
+  var next = document.getElementsByClassName('next-thumbnail')[0];
+  prev.setAttribute('onClick', 'thumbnailScroll(' + (-1) + ')');
+  next.setAttribute('onClick', 'thumbnailScroll(' + 1 + ')');
+
+
   for (var i = 0; i < length; i++) {
     var thumbnailImgContainer = document.createElement('span');
-    var popup = document.createElement('a');
     var image = document.createElement('img');
     image.classList.add('thumbnail-img');
     image.src = mockData[i].src;
     image.setAttribute('onClick', 'currentSlide(' + (i + 1) + ')');
-    popup.appendChild(image);
-    popup.href = 'javascript:void(0)';
-    popup.classList.add('popup');
-    popup.title = mockData[i].title;
-    thumbnailImgContainer.appendChild(popup);
-    thumbnailImgContainer.classList = 'thumbnail-img-container';
+    thumbnailImgContainer.appendChild(image);
+    thumbnailImgContainer.title = mockData[i].title;
+    thumbnailImgContainer.classList.add('thumbnail-img-container');
     thumbnail.appendChild(thumbnailImgContainer);
   }
 }
 
+function thumbnailScroll(n) {
+  showThumbnail(thumbnailIndex += n, n > 0 ? 'plus' : 'prev');
+}
+
 function plusSlides(n) {
-  showSlides(slideIndex += n, thumbnailImgsContainer);
+  showSlides(slideIndex += n, thumbnailImgsContainer, n > 0 ? 'plus' : 'prev');
 }
 
 function currentSlide(n) {
+  thumbnailIndex = n;
   showSlides(slideIndex = n, thumbnailImgsContainer);
 }
 
-function showSlides(n, thumbnailImgsContainer) {
+function showSlides(n, thumbnailImgsContainer, flag) {
   var i;
+  var thumbnailIndex = 8;
+
   slides = document.getElementsByClassName('image');
   thumbnailImgsContainer = document.getElementsByClassName('thumbnail-img-container');
   thumbnailImgs = document.getElementsByClassName('thumbnail-img');
   // end of the slides
   if (n > slides.length) {
-    slideIndex = 1;
+    slideIndex = slides.length;
+    return false;
   }
   // start of the slides
   if (n < 1) {
-    slideIndex = slides.length;
+    slideIndex = 1;
+    return false;
   }
+  // show one pic
   for (i = 0; i < slides.length; i++) {
     slides[i].style.display = 'none';
   }
+  // show 8 thumbnail
+  if (slideIndex <= thumbnailIndex) {
+    for (i = 0; i < thumbnailIndex; i++) {
+      thumbnailImgsContainer[i].style.display = 'inline-block';
+    }
+    for (i = thumbnailIndex; i < thumbnailImgs.length; i++) {
+      thumbnailImgsContainer[i].style.display = 'none';
+    }
+  } else {
+    for (i = 0; i < thumbnailIndex; i++) {
+      thumbnailImgsContainer[i].style.display = 'none';
+    }
+    for (i = slideIndex; i < thumbnailImgs.length; i++) {
+      thumbnailImgsContainer[i].style.display = 'none';
+    }
+    if (flag === 'plus') {
+      for (i = slideIndex - thumbnailIndex; i < slideIndex; i++) {
+        thumbnailImgsContainer[i].style.display = 'inline-block';
+      }
+    } else {
+      for (i = slideIndex - thumbnailIndex; i < slideIndex; i++) {
+        thumbnailImgsContainer[i].style.display = 'inline-block';
+      }
+      for (i = slideIndex; i < thumbnailImgs.length; i++) {
+        thumbnailImgsContainer[i].style.display = 'none';
+      }
+    }
+  }
+
   for (i = 0; i < thumbnailImgsContainer.length; i++) {
     thumbnailImgsContainer[i].classList.remove('active');
     thumbnailImgs[i].classList.remove('active-img');
@@ -140,3 +209,43 @@ function showSlides(n, thumbnailImgsContainer) {
   thumbnailImgsContainer[slideIndex - 1].classList.add('active');
   thumbnailImgs[slideIndex - 1].classList.add('active-img');
 }
+function showThumbnail(n, flag) {
+  var i;
+  var showCount = 8;
+  thumbnailImgsContainer = document.getElementsByClassName('thumbnail-img-container');
+  thumbnailImgs = document.getElementsByClassName('thumbnail-img');
+  if (n >= thumbnailImgsContainer.length) {
+    thumbnailIndex = thumbnailImgsContainer.length;
+    n = thumbnailImgsContainer.length;
+  }
+  if (flag === 'plus') {
+    for (i = 0; i < n - showCount; i++) {
+      thumbnailImgsContainer[i].style.display = 'none';
+    }
+    for (i = n - showCount; i < n; i++) {
+      thumbnailImgsContainer[i].style.display = 'inline-block';
+    }
+  } else {
+    if (n < 8) {
+      thumbnailIndex = 8;
+      return false;
+    } else {
+      for (i = n - showCount; i < n; i++) {
+        thumbnailImgsContainer[i].style.display = 'inline-block';
+      }
+      for (i = n; i < thumbnailImgsContainer.length; i++) {
+        thumbnailImgsContainer[i].style.display = 'none';
+      }
+    }
+  }
+}
+
+window.addEventListener("keydown", function (e) {
+  var key = e.which || e.keyCode;
+  if (key == '37') {
+    plusSlides(-1);
+  }
+  else if (key == '39') {
+    plusSlides(1);
+  }
+});
