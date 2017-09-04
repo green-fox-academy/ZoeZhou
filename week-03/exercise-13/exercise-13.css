@@ -28,6 +28,7 @@ p {
     border: 1px solid #000;
     text-align: center;
     padding: 5px;
+    color: #fff;
 }
 
 .elevator {
@@ -46,4 +47,8 @@ p {
     position: absolute;
     top: 200px;
     left: 50px;
+}
+
+.fadeout{
+    transform: scale(0, 1);
 }

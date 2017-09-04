@@ -83,13 +83,13 @@ function SpaceX(fuel) {
     this.launches += rocket.launchNum;
   };
   this.refill_all = function () {
-    var that = this;
+    let that = this;
     this.rockets.forEach(function (value) {
       that.fuel -= value.refill();
     })
   };
   this.launch_all = function () {
-    var that = this;
+    let that = this;
     this.rockets.forEach( function (value) {
       value.launch();
       that.launches += 1;

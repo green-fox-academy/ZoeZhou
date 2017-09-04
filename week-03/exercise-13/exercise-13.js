@@ -7,6 +7,15 @@ var elevator = {
     buttonAdd: document.getElementsByClassName('add')[0],
     buttonRemove: document.getElementsByClassName('remove')[0]
 }
+elevator.drawElevator = function (length) {
+    var container = document.getElementsByClassName('elevator')[0];
+    for (var i = 0; i < length; i++) {
+        var floor = document.createElement('p');
+        floor.classList.add('floor');
+        container.appendChild(floor);
+    }
+    this.floors = document.getElementsByClassName('floor');
+};
 elevator.peopleChange = function (n) {
     this.currentPeople += n;
     this.height = this.floors.length - 1;
@@ -38,17 +47,7 @@ elevator.floorChange = function (n) {
         this.floors[this.height - this.currentFloor].style.backgroundColor = 'green';
         this.floors[this.height - this.currentFloor].innerText = this.currentPeople;
     }
-}
-elevator.drawElevator = function (length) {
-    var container = document.getElementsByClassName('elevator')[0];
-    for (var i = 0; i < length; i++) {
-        var floor = document.createElement('p');
-        floor.classList.add('floor');
-        container.appendChild(floor);
-    }
-    this.floors = document.getElementsByClassName('floor');
 };
-
 elevator.drawElevator(10);
 elevator.buttonAdd.setAttribute('onClick', 'elevator.peopleChange(' + 1 + ')');
 elevator.buttonRemove.setAttribute('onClick', 'elevator.peopleChange(' + (-1) + ')');
