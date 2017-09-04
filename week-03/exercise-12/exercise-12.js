@@ -33,7 +33,7 @@ function Rocket(type, fuel, launchNum) {
   }
   this.launch = function () {
     if (this.type === 'falcon1') {
-      this.fule -= 1;
+      this.fuel -= 1;
     } else {
       this.fuel -= 9;
     }
@@ -57,11 +57,6 @@ function Rocket(type, fuel, launchNum) {
     return `name: ${this.type}, fuel: ${this.fuel}, launches: ${this.launchNum}`;
   };
 }
-// var falcon9 = new Rocket('falcon9');
-// console.log(falcon9.getStarts());
-// falcon9.launch();
-// falcon9.refill();
-// console.log(falcon9.getStarts());
 
 // SpaceX
 
@@ -84,21 +79,23 @@ function SpaceX(fuel) {
   this.rockets = [];
   this.launches = 0;
   this.addRocket = function (rocket) {
-    rockets.push(rocket);
-    launches += rocket.launchNum;
+    this.rockets.push(rocket);
+    this.launches += rocket.launchNum;
   };
-  this.refillAll = function () {
-    rockets.forEach(function (value) {
-      this.fuel -= value.amountFill();
+  this.refill_all = function () {
+    var that = this;
+    this.rockets.forEach(function (value) {
+      that.fuel -= value.refill();
     })
   };
-  this.launchAll = function () {
-    rockets.forEach( function (value) {
+  this.launch_all = function () {
+    var that = this;
+    this.rockets.forEach( function (value) {
       value.launch();
-      launches += 1;
+      that.launches += 1;
     })
   };
-  this.buyFuel = function (amount) {
+  this.buy_fuel = function (amount) {
     this.fuel += amount;
   };
   this.getStats = function () {
@@ -106,13 +103,8 @@ function SpaceX(fuel) {
   }
 }
 
-// module.exports = {
-//   Rocket: Rocket,
-//   SpaceX: SpaceX
-// }
-
 var falcon1 = new Rocket('falcon1')
-var returned_falcon9 = Rocket('falcon9', 11, 1)
+var returned_falcon9 = new Rocket('falcon9', 11, 1)
 
 falcon1.refill() // 5
 falcon1.launch()
@@ -124,7 +116,7 @@ var falcon1 = new Rocket('falcon1', 0, 0)
 var falcon9 = new Rocket('falcon9', 0, 0)
 var returned_falcon9 = new Rocket('falcon9', 11, 1)
 
-console.log(returned_falcon9.getStats()) // name: falcon9, fuel: 11
+console.log(returned_falcon9.getStats()) // name: falcon9, fuel: 11, launches: 1
 
 space_x.addRocket(falcon1)
 space_x.addRocket(falcon9)

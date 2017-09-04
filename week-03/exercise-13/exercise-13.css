@@ -1,0 +1,49 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: orange;
+}
+
+button {
+    width: 130px;
+    padding: 10px;
+    text-align: center;
+    display: block;
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid blue;
+}
+
+button:active {
+    background-color: blue;
+}
+
+p {
+    width: 200px;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #000;
+    text-align: center;
+    padding: 5px;
+}
+
+.elevator {
+    position: absolute;
+    right: 20px;
+    top: 50px;
+}
+
+.controlElevator {
+    position: absolute;
+    top: 50px;
+    left: 50px;
+}
+
+.controlPeople {
+    position: absolute;
+    top: 200px;
+    left: 50px;
+}
