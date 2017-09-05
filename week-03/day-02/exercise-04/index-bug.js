@@ -15,11 +15,9 @@ var buttonElements = [
 // solution one
 function appendButtons() {
   for (var i = 0; i < buttonElements.length; i++) {
-    (function (i) {
-      buttonElements[i].addEventListener('click', function () {
-        console.log('button index: ', i);
-      })
-    })(i);
+    buttonElements[i].addEventListener('click', (function (i) {
+      return function () { return console.log('button index: ', i);};
+    })(i));
     document.body.appendChild(buttonElements[i]);
   }
 }
