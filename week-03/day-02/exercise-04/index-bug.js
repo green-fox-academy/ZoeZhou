@@ -4,7 +4,7 @@ var buttonElements = [
   'Button 0',
   'Button 1',
   'Button 2'
-].map(function(buttonText) {
+].map(function (buttonText) {
   var buttonElement;
   buttonElement = document.createElement('button');
   buttonElement.appendChild(document.createTextNode(buttonText));
@@ -12,25 +12,27 @@ var buttonElements = [
 });
 
 
-//solution one
-// function appendButtons() {
-//   for(var i = 0; i < buttonElements.length; i++) {
-//     (function (i){buttonElements[i].addEventListener('click', function() {
-//       console.log('button index: ', i);
-//     })})(i);
-//     document.body.appendChild(buttonElements[i]);
-//   }
-// }
-
-//solution two
+// solution one
 function appendButtons() {
-  for(let i = 0; i < buttonElements.length; i++) {
-    buttonElements[i].addEventListener('click', function() {
-      console.log('button index: ', i);
-    });
+  for (var i = 0; i < buttonElements.length; i++) {
+    (function (i) {
+      buttonElements[i].addEventListener('click', function () {
+        console.log('button index: ', i);
+      })
+    })(i);
     document.body.appendChild(buttonElements[i]);
   }
 }
+
+//solution two
+// function appendButtons() {
+//   for(let i = 0; i < buttonElements.length; i++) {
+//     buttonElements[i].addEventListener('click', function() {
+//       console.log('button index: ', i);
+//     });
+//     document.body.appendChild(buttonElements[i]);
+//   }
+// }
 
 window.addEventListener('load', appendButtons);
 
