@@ -5,7 +5,7 @@
 
 .out-container {
     width: 890px;
-    height: 550px;
+    height: 560px;
     position: absolute;
     margin: auto;
     top: 0;
@@ -24,6 +24,8 @@ body {
     position: relative;
     margin: 0 auto;
     padding: 0px 45px;
+    box-shadow: 5px 5px 5px #333;
+    margin-bottom: 10px;
 }
 
 .image {
@@ -110,7 +112,7 @@ body {
 }
 
 .active-img {
-    box-shadow: 1px 7px 5px #000 !important;
+    box-shadow: 1px 15px 5px -10px #000 !important
 }
 
 .thumbnail-img-container {

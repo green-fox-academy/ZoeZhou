@@ -75,11 +75,10 @@ var mockData = [
     even if the body contains only a single statement. The first statement of a non-empty block must begin on its own line.`,
     src: './imgs/10.jpg'
   }
-
 ];
 var slideIndex = 1;
-var thumbnailIndex = 8;
-var thumbnailImgsContainer; //span include img
+var thumbnailIndex = 1;
+var thumbnailImgsContainers; //span include img
 var thumbnailImgs; //imgs
 createImgs();
 createThumbNail();
@@ -121,10 +120,6 @@ function createThumbNail() {
   var length = mockData.length;
   var prev = document.getElementsByClassName('prev-thumbnail')[0];
   var next = document.getElementsByClassName('next-thumbnail')[0];
-  prev.setAttribute('onClick', 'thumbnailScroll(' + (-1) + ')');
-  next.setAttribute('onClick', 'thumbnailScroll(' + 1 + ')');
-
-
   for (var i = 0; i < length; i++) {
     var thumbnailImgContainer = document.createElement('span');
     var image = document.createElement('img');
@@ -136,27 +131,26 @@ function createThumbNail() {
     thumbnailImgContainer.classList.add('thumbnail-img-container');
     thumbnail.appendChild(thumbnailImgContainer);
   }
+  showThumbnail('init');
+  next.setAttribute('onClick', `scrollThubnail('next-scroll')`);
+  prev.setAttribute('onClick', `scrollThubnail('prev-scroll')`);
 }
-
-function thumbnailScroll(n) {
-  showThumbnail(thumbnailIndex += n, n > 0 ? 'plus' : 'prev');
-}
-
 function plusSlides(n) {
-  showSlides(slideIndex += n, thumbnailImgsContainer, n > 0 ? 'plus' : 'prev');
+  showSlides(slideIndex += n, thumbnailImgsContainers);
+  if (n > 0) {
+    showThumbnail('next');
+  } else {
+    showThumbnail('prev');
+  }
 }
-
 function currentSlide(n) {
-  thumbnailIndex = n;
-  showSlides(slideIndex = n, thumbnailImgsContainer);
+  showSlides(slideIndex = n, thumbnailImgsContainers);
+  showThumbnail('current', n);
 }
-
-function showSlides(n, thumbnailImgsContainer, flag) {
+function showSlides(n, thumbnailImgsContainers) {
   var i;
-  var thumbnailIndex = 8;
-
   slides = document.getElementsByClassName('image');
-  thumbnailImgsContainer = document.getElementsByClassName('thumbnail-img-container');
+  thumbnailImgsContainers = document.getElementsByClassName('thumbnail-img-container');
   thumbnailImgs = document.getElementsByClassName('thumbnail-img');
   // end of the slides
   if (n > slides.length) {
@@ -172,74 +166,14 @@ function showSlides(n, thumbnailImgsContainer, flag) {
   for (i = 0; i < slides.length; i++) {
     slides[i].style.display = 'none';
   }
-  // show 8 thumbnail
-  if (slideIndex <= thumbnailIndex) {
-    for (i = 0; i < thumbnailIndex; i++) {
-      thumbnailImgsContainer[i].style.display = 'inline-block';
-    }
-    for (i = thumbnailIndex; i < thumbnailImgs.length; i++) {
-      thumbnailImgsContainer[i].style.display = 'none';
-    }
-  } else {
-    for (i = 0; i < thumbnailIndex; i++) {
-      thumbnailImgsContainer[i].style.display = 'none';
-    }
-    for (i = slideIndex; i < thumbnailImgs.length; i++) {
-      thumbnailImgsContainer[i].style.display = 'none';
-    }
-    if (flag === 'plus') {
-      for (i = slideIndex - thumbnailIndex; i < slideIndex; i++) {
-        thumbnailImgsContainer[i].style.display = 'inline-block';
-      }
-    } else {
-      for (i = slideIndex - thumbnailIndex; i < slideIndex; i++) {
-        thumbnailImgsContainer[i].style.display = 'inline-block';
-      }
-      for (i = slideIndex; i < thumbnailImgs.length; i++) {
-        thumbnailImgsContainer[i].style.display = 'none';
-      }
-    }
-  }
-
-  for (i = 0; i < thumbnailImgsContainer.length; i++) {
-    thumbnailImgsContainer[i].classList.remove('active');
+  for (i = 0; i < thumbnailImgsContainers.length; i++) {
+    thumbnailImgsContainers[i].classList.remove('active');
     thumbnailImgs[i].classList.remove('active-img');
   }
   slides[slideIndex - 1].style.display = 'block';
-  thumbnailImgsContainer[slideIndex - 1].classList.add('active');
+  thumbnailImgsContainers[slideIndex - 1].classList.add('active');
   thumbnailImgs[slideIndex - 1].classList.add('active-img');
 }
-function showThumbnail(n, flag) {
-  var i;
-  var showCount = 8;
-  thumbnailImgsContainer = document.getElementsByClassName('thumbnail-img-container');
-  thumbnailImgs = document.getElementsByClassName('thumbnail-img');
-  if (n >= thumbnailImgsContainer.length) {
-    thumbnailIndex = thumbnailImgsContainer.length;
-    n = thumbnailImgsContainer.length;
-  }
-  if (flag === 'plus') {
-    for (i = 0; i < n - showCount; i++) {
-      thumbnailImgsContainer[i].style.display = 'none';
-    }
-    for (i = n - showCount; i < n; i++) {
-      thumbnailImgsContainer[i].style.display = 'inline-block';
-    }
-  } else {
-    if (n < 8) {
-      thumbnailIndex = 8;
-      return false;
-    } else {
-      for (i = n - showCount; i < n; i++) {
-        thumbnailImgsContainer[i].style.display = 'inline-block';
-      }
-      for (i = n; i < thumbnailImgsContainer.length; i++) {
-        thumbnailImgsContainer[i].style.display = 'none';
-      }
-    }
-  }
-}
-
 window.addEventListener("keydown", function (e) {
   var key = e.which || e.keyCode;
   if (key == '37') {
@@ -249,3 +183,72 @@ window.addEventListener("keydown", function (e) {
     plusSlides(1);
   }
 });
+function showThumbnail(flag, clickIndex) {
+  var thumbnailLength = mockData.length;
+  thumbnailImgsContainers = thumbnailImgsContainers = document.getElementsByClassName('thumbnail-img-container');
+  var showNum = 8;
+  if (flag === 'next') {
+    thumbnailIndex += 1;
+    if (thumbnailIndex > thumbnailLength) {
+      thumbnailIndex = thumbnailLength;
+      return;
+    }
+  }
+  else if (flag === 'init') {
+    thumbnailIndex = 1;
+  }
+  else if (flag === 'prev') {
+    thumbnailIndex -= 1;
+    if (thumbnailIndex <= 0) {
+      thumbnailIndex = 1;
+      return;
+    }
+  }
+  else if (flag === 'next-scroll') {
+    if (thumbnailIndex <= showNum) {
+      thumbnailIndex = showNum + 1;
+    } else {
+      thumbnailIndex += 1;
+      if (thumbnailIndex > thumbnailLength) {
+        thumbnailIndex = thumbnailLength;
+        return;
+      }
+    }
+  } else if (flag === 'prev-scroll') {
+    thumbnailIndex -= 1;
+    if (thumbnailIndex <= 0) {
+      thumbnailIndex = 8;
+      return;
+    }
+  } else {
+    //a bug here
+    thumbnailIndex = clickIndex;
+  }
+  if (thumbnailIndex < showNum) {
+    for (var i = 0; i < thumbnailLength; i++) {
+      if (i < showNum) {
+        thumbnailImgsContainers[i].style.display = 'inline-block';
+        continue;
+      } else {
+        thumbnailImgsContainers[i].style.display = 'none';
+      }
+    }
+  } else {
+    for (var i = 0; i < thumbnailLength; i++) {
+      if (i < thumbnailIndex - showNum) {
+        thumbnailImgsContainers[i].style.display = 'none';
+      }
+      else if (i < thumbnailIndex) {
+        thumbnailImgsContainers[i].style.display = 'inline-block';
+      }
+      else {
+        thumbnailImgsContainers[i].style.display = 'none';
+      }
+    }
+  }
+}
+function scrollThubnail(flag) {
+  showThumbnail(flag);
+}
+
+
