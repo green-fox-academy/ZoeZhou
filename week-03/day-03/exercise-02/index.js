@@ -1,25 +1,21 @@
 window.addEventListener('load', init);
-var prevHef;
-var nextHef;
-var firstHef;
-var lastHef;
-
+var prevHef, 
+    nextHef, 
+    firstHef, 
+    lastHef;
 function init() {
   var xhr = new XMLHttpRequest();
-  xhr.open(
-    'get',
-    'https://www.anapioficeandfire.com/api/characters?page=1&pageSize=10'
-  );
+  xhr.open('get', 'https://www.anapioficeandfire.com/api/characters?page=1&pageSize=10');
   xhr.send();
   xhr.addEventListener('readystatechange', function () { reloadInfo(xhr) });
   var buttonNext = document.getElementById('next');
   var buttonPrev = document.getElementById('prev');
   var buttonFirst = document.getElementById('first');
   var buttonLast = document.getElementById('last');
-  buttonNext.addEventListener('click', function(){changeIndex(nextHef)});
-  buttonPrev.addEventListener('click', function(){changeIndex(prevHef)});
-  buttonFirst.addEventListener('click', function(){changeIndex(firstHef)});
-  buttonLast.addEventListener('click', function(){changeIndex(lastHef)});
+  buttonNext.addEventListener('click', function () { changeIndex(nextHef) });
+  buttonPrev.addEventListener('click', function () { changeIndex(prevHef) });
+  buttonFirst.addEventListener('click', function () { changeIndex(firstHef) });
+  buttonLast.addEventListener('click', function () { changeIndex(lastHef) });
 }
 function showList(data) {
   var container = document.getElementById('book-container');
@@ -29,15 +25,11 @@ function showList(data) {
     container.appendChild(li);
   }
 }
-function changeIndex(hef){
+function changeIndex(hef) {
   var container = document.getElementById('book-container');
   container.innerHTML = '';
   var xhr = new XMLHttpRequest();
-  // console.log(nextHef)
-  xhr.open(
-    'get',
-    hef
-  );
+  xhr.open('get', hef);
   xhr.send();
   xhr.addEventListener('readystatechange', function () { reloadInfo(xhr) });
 }
@@ -47,8 +39,6 @@ function reloadInfo(xhr) {
       // get json
       var responseHeader = xhr.getResponseHeader('link');
       var arr = responseHeader.match(/https:\/\/\w+(.\w+)+/g);
-      // console.log(responseHeader);
-      // console.log(arr);
       if (arr.length === 3) {
         prevHef = arr[1];
         nextHef = arr[0];
@@ -62,8 +52,6 @@ function reloadInfo(xhr) {
         lastHef = arr[3];
       }
       var jsonData = JSON.parse(xhr.responseText);
-      // console.log(jsonData);
-      // console.log(jsonData.length);
       showList(jsonData);
     }
   }
