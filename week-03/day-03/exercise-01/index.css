@@ -1,0 +1,19 @@
+#pic-container {
+    width: 560px;
+    height: 300px;
+    margin-bottom: 20px;
+}
+
+#pic-container>img {
+    height: 100%;
+    width: 100%;
+}
+
+#thumbnail {
+  width: 560px;
+}
+#thumbnail img {
+  height: 50px;
+  width: 50px;
+  margin: 0 10px;
+}
