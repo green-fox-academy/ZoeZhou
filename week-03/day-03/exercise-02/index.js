@@ -1,8 +1,8 @@
 window.addEventListener('load', init);
+var prevHef;
 var nextHef;
 var firstHef;
 var lastHef;
-
 
 function init() {
   var xhr = new XMLHttpRequest();
@@ -16,10 +16,10 @@ function init() {
   var buttonPrev = document.getElementById('prev');
   var buttonFirst = document.getElementById('first');
   var buttonLast = document.getElementById('last');
-  buttonNext.addEventListener('click', getNext);
-  buttonPrev.addEventListener('click', getPrev);
-  buttonFirst.addEventListener('click', getFirst);
-  buttonLast.addEventListener('click', getLast);
+  buttonNext.addEventListener('click', function(){changeIndex(nextHef)});
+  buttonPrev.addEventListener('click', function(){changeIndex(prevHef)});
+  buttonFirst.addEventListener('click', function(){changeIndex(firstHef)});
+  buttonLast.addEventListener('click', function(){changeIndex(lastHef)});
 }
 function showList(data) {
   var container = document.getElementById('book-container');
@@ -29,47 +29,14 @@ function showList(data) {
     container.appendChild(li);
   }
 }
-function getNext() {
+function changeIndex(hef){
   var container = document.getElementById('book-container');
   container.innerHTML = '';
   var xhr = new XMLHttpRequest();
   // console.log(nextHef)
   xhr.open(
     'get',
-    nextHef
-  );
-  xhr.send();
-  xhr.addEventListener('readystatechange', function () { reloadInfo(xhr) });
-}
-function getPrev() {
-  var container = document.getElementById('book-container');
-  container.innerHTML = '';
-  var xhr = new XMLHttpRequest();
-  xhr.open(
-    'get',
-    prevHef
-  );
-  xhr.send();
-  xhr.addEventListener('readystatechange', function () { reloadInfo(xhr) });
-}
-function getFirst() {
-  var container = document.getElementById('book-container');
-  container.innerHTML = '';
-  var xhr = new XMLHttpRequest();
-  xhr.open(
-    'get',
-    firstHef
-  );
-  xhr.send();
-  xhr.addEventListener('readystatechange', function () { reloadInfo(xhr) });
-}
-function getLast() {
-  var container = document.getElementById('book-container');
-  container.innerHTML = '';
-  var xhr = new XMLHttpRequest();
-  xhr.open(
-    'get',
-    lastHef
+    hef
   );
   xhr.send();
   xhr.addEventListener('readystatechange', function () { reloadInfo(xhr) });
