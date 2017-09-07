@@ -36,6 +36,8 @@ function postInfo() {
       body: JSON.stringify(request)
     }).then(function (response) {
       messagesKeeper.push(request);
+      document.getElementById('user-name').value = '';
+      document.getElementById('input').value = '';
       loadPage(messagesKeeper);
       var container = document.getElementById('container');
       container.scrollTop = container.scrollHeight;
