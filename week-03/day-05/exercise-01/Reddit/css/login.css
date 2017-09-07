@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    padding: 20px;
+    width: 500px;
+}
+
+h2 {
+    padding-bottom: 5px;
+    border-bottom: 5px solid #5F99CF;
+    margin-bottom: 10px;
+}
+
+h2 a {
+    text-decoration: none;
+}
+
+form>div {
+    background: #CEE3F8;
+    margin: 10px 0 10px 0;
+    padding: 10px 0 20px 20px;
+}
+
+form>div label {
+    font-size: 20px;
+    display: block;
+}
+
+#username {
+    width: 460px;
+    height: 30px;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+.submit {
+    padding: 5px;
+}

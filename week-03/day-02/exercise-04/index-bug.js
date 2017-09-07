@@ -16,13 +16,25 @@ var buttonElements = [
 function appendButtons() {
   for (var i = 0; i < buttonElements.length; i++) {
     buttonElements[i].addEventListener('click', (function (i) {
-      return function () { return console.log('button index: ', i);};
+      return function () { console.log('button index: ', i); };
     })(i));
     document.body.appendChild(buttonElements[i]);
   }
 }
 
-//solution two
+// solution two
+// function appendButtons() {
+//   for(var i = 0; i < buttonElements.length; i++) {
+//     (function (i) {
+//       buttonElements[i].addEventListener('click', function() {
+//       console.log('button index: ', i);
+//     })
+//   })(i);
+//     document.body.appendChild(buttonElements[i]);
+//   }
+// }
+
+//solution three
 // function appendButtons() {
 //   for(let i = 0; i < buttonElements.length; i++) {
 //     buttonElements[i].addEventListener('click', function() {
