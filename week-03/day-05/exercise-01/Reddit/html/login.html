@@ -10,14 +10,26 @@
 </head>
 
 <body>
-    <h2>login to <a href="./index.html">the page</a></h2>
-    <form action="" method="post">
-        <div class="part-username">
-            <label for="username">username</label>
-            <input type="text" name="username" id="username">
-        </div>
-        <button type="submit" class="submit">login</button>
-    </form>
+    <header>
+        <span><a href="./index.html">MAIN -</a> 
+            <a href="./addpost.html" class="create-post">CREATE A NEW POST</a>
+            <!-- <a href="#" class="login">LOGIN</a> -->
+        </span>
+    </header>
+    <main>
+        <h2>login to <a href="./index.html">the page</a></h2>
+        <form action="" method="post">
+            <div class="part-username">
+                <label for="username">username</label>
+                <input type="text" name="username" id="username">
+            </div>
+        </form>
+        <button id="submit" type="submit">login</button>
+    </main>
+    <span class="tips">
+        relocate to main page after <span class="count-down">3</span> seconds...
+    </span>
+    <script src="../js/login.js"></script>
 </body>
 
 </html>

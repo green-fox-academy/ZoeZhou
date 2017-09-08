@@ -16,6 +16,7 @@ function init() {
   // postUpvote(77);
   // postInfo(mock);
   // deleteInfo();
+
   fetch(url + '/posts').then(function (response) {
     return response.json();
   }).then(function (data) {
@@ -26,6 +27,19 @@ function init() {
 }
 function loadPage(data) {
   var allMessages = document.getElementById('mainContent');
+  var username = document.getElementById('login');
+  var logoutLink = document.getElementById('logout');
+  logoutLink.addEventListener('click', logout);
+
+  if (window.localStorage.username) {
+    username.innerText = window.localStorage.username;
+    username.href = '##';
+    username.classList.add('loginSuccess');
+    logoutLink.style.display = 'inline-block';
+  } else {
+    username.innerText = 'LOGIN';
+    username.style.cursor = 'cursor';
+  }
   // allMessages.innerHTML = '';
   data.forEach(function (value, index) {
     var messageContainer = document.createElement('div');
@@ -39,6 +53,7 @@ function loadPage(data) {
     imageUp.classList.add('upvote');
     imageUp.classList.add('vote-img');
     imageUp.src = '../imgs/upvote.png';
+    imageUp.addEventListener('click', function () { changeVoteState(value.id, 'upvote', imageUp, imageDown) });
     imageUp.addEventListener('click', changeVote);
     var voteText = document.createElement('span');
     voteText.innerText = value.score;
@@ -46,6 +61,7 @@ function loadPage(data) {
     imageDown.classList.add('downvote');
     imageDown.classList.add('vote-img');
     imageDown.src = '../imgs/downvote.png';
+    imageDown.addEventListener('click', function () { changeVoteState(value.id, 'downvote', imageUp, imageDown) });
     imageDown.addEventListener('click', changeVote);
     var contentRight = document.createElement('div');
     contentRight.classList.add('content-right');
@@ -54,17 +70,20 @@ function loadPage(data) {
     title.innerHTML = value.title;
     var submitTime = document.createElement('span');
     submitTime.classList.add('submit-time');
-    var submitTimeTxt = new Date().getTime() - value.timestamp;
+    var submitTimeTxt = new Date().getTime() - parseInt(value.timestamp);
     submitTimeTxt = formatTime(submitTimeTxt);
     submitTime.innerHTML = `submitted ${submitTimeTxt} ago by ${value.owner || 'anonymous'}`;
     var change = document.createElement('span');
     change.classList.add('change');
     var modify = document.createElement('a');
-    modify.href = './modify.html';
+    modify.addEventListener('click', function () { deliver(value.href, value.title, value.id, modify) });
+    // modify.href = './modify.html';
+    modify.href = '##';
     modify.innerHTML = 'modify';
     var remove = document.createElement('a');
-    remove.href = '#';
+    remove.href = '##';
     remove.innerHTML = 'remove';
+    remove.addEventListener('click', function () { deleteInfo(value.id) });
     contentLeft.appendChild(imageUp);
     contentLeft.appendChild(voteText);
     contentLeft.appendChild(imageDown);
@@ -178,22 +197,53 @@ function postInfo(request) {
   })
 }
 function deleteInfo(id) {
-  for (var id = 109; id <= 122; id++) {
-    fetch(url + '/posts/' + id, {
-      method: 'delete',
-      headers: {
-        'Accept': 'application/json'
-      }
-    }).then(function (response) {
-      console.log('success');
-    })
-  }
-}
-function postUpvote(id) {
-  fetch(url + `posts/${id}/upvote`, {
-    method: 'put',
+  event.preventDefault();
+  fetch(url + '/posts/' + id, {
+    method: 'delete',
     headers: {
       'Accept': 'application/json'
     }
+  }).then(function (response) {
+    console.log('success');
+    var allMessages = document.getElementById('mainContent');
+    allMessages.innerHTML = '';
+    init()
   })
+}
+function changeVoteState(id, token, picUp, picDown) {
+  var voteFlag = votedOrNot(picUp, picDown);
+  if (voteFlag === 'upvoted' && token === 'upvote') {
+    token = 'downvote';
+  }
+  else if (voteFlag === 'downvoted' && token === 'downvote') {
+    token = 'upvote';
+  }
+  else if ((voteFlag === 'downvoted' && token === 'upvote') ||
+    (voteFlag === 'upvoted' && token === 'downvote')) {
+    putVote(id, token);
+  }
+  putVote(id, token);
+}
+function putVote(id, token) {
+  fetch(`${url}/posts/${id}/${token}`, {
+    method: 'PUT',
+    headers: {
+      'Accept': 'application/json'
+    }
+  }).then(function (response) {
+    console.log(response);
+  })
+}
+function deliver(href, title, id, modifylink) {
+  modifylink.href = `../html/modify.html?id=${id}&href=${href}&title=${title}`;
+}
+function logout() {
+  var myStorage = window.localStorage;
+  var username = document.getElementById('login');
+  myStorage.removeItem('username');
+  username.innerText = 'LOGIN';
+  username.href = '../html/login.html';
+  username.classList.remove('loginSuccess');
+  var logoutLink = document.getElementById('logout');
+  logoutLink.style.display = 'none';
 }

@@ -10,19 +10,32 @@
 </head>
 
 <body>
-    <h2>modify post <a href="./index.html"># 1</a></h2>
-    <form action="" method="post">
-        <div class="part-url">
-            <label for="url">url</label>
-            <input type="text" name="url" id="url">
-        </div>
-        <div class="part-title">
-            <label for="title"><span>*</span>title</label>
-            <textarea name="title" id="title" cols="" rows="3" required="required"></textarea>
-        </div>
-        <p>*required</p>
-        <button type="submit" class="submit">modify</button>
-    </form>
+    <header>
+        <span><a href="./index.html">MAIN -</a>  
+            <a href="./addpost.html" class="create-post">CREATE A NEW POST</a>
+            <a href="#" class="login">LOGIN</a>
+        </span>
+    </header>
+    <main>
+        <h2>modify post <a href="./index.html" id="idNum"># 1</a></h2>
+        <form action="" method="post" id="post-form">
+            <div class="part-href">
+                <label for="href">href</label>
+                <input type="text" name="href" id="href">
+            </div>
+            <div class="part-title">
+                <label for="title"><span>*</span>title</label>
+                <textarea name="title" id="title" cols="" rows="3" required="required"></textarea>
+            </div>
+            <p>*required</p>
+            <!-- <button type="submit" class="submit">modify</button> -->
+        </form>
+        <button id="submit">Submit</button>
+        <span class="tips">
+            relocate to main page after <span class="count-down">3</span> seconds...
+        </span>
+    </main>
+    <script src="../js/modify.js"></script>
 </body>
 
 </html>
