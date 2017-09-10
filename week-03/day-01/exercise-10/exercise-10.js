@@ -6,7 +6,7 @@
 // It should have a "getTheWoodenLegNames" method that retuns the names of the pirates that has wooden leg
 function PirateHorde(pirates) {
   this.pirates = pirates;
-  this.addPirate = function (name, gold, hasWoodenLeg) {
+  this.addPirate = function(name, gold, hasWoodenLeg) {
     var obj = {
       name: name,
       gold: gold,
@@ -14,17 +14,17 @@ function PirateHorde(pirates) {
     };
     this.pirates.push(obj);
   };
-  this.getSumGold = function () {
+  this.getSumGold = function() {
     var sumOfGold = 0;
-    this.pirates.forEach(function (value) {
+    this.pirates.forEach(function(value) {
       sumOfGold += value.gold;
     })
     return sumOfGold;
   };
-  this.getLongestName = function () {
+  this.getLongestName = function() {
     var longest = 0;
     var indexOut = 0;
-    this.pirates.forEach(function (value, indexIn) {
+    this.pirates.forEach(function(value, indexIn) {
       if (value.name.length > longest) {
         longest = value.name.length;
         indexOut = indexIn;
@@ -32,12 +32,12 @@ function PirateHorde(pirates) {
     })
     return this.pirates[indexOut].name;
   };
-  this.getTheWoodenLegNames = function () {
-    var woodenLegArray = this.pirates.filter(function (value) {
+  this.getTheWoodenLegNames = function() {
+    var woodenLegArray = this.pirates.filter(function(value) {
       return value.hasWoodenLeg === true;
     })
     var names = [];
-    woodenLegArray.forEach(function (value) {
+    woodenLegArray.forEach(function(value) {
       names.push(value.name);
     })
     return names;

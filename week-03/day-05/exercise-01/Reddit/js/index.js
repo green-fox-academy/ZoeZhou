@@ -1,34 +1,20 @@
 'use strict'
-window.addEventListener('load', init);
-var mock =
-  [
-    { "title": "Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.", "href": "https://mapquest.com" },
-    { "title": "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.", "href": "http://dmoz.org" },
-    { "title": "Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.", "href": "https://goodreads.com" },
-    { "title": "Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.", "href": "https://quantcast.com" },
-    { "title": "Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum. Aliquam non mauris.", "href": "http://un.org" },
-
-  ]
-
 var url = 'https://time-radish.glitch.me';
-var messageKeeper = null;
-function init() {
-  // postUpvote(77);
-  // postInfo(mock);
-  // deleteInfo();
+init();
 
-  fetch(url + '/posts').then(function (response) {
+function init() {
+  fetch(url + '/posts').then(function(response) {
     return response.json();
-  }).then(function (data) {
-    messageKeeper = data.posts;
-    loadPage(messageKeeper);
-    console.log(messageKeeper);
+  }).then(function(data) {
+    loadPage(data.posts);
+    console.log(data.posts);
   })
 }
 function loadPage(data) {
   var allMessages = document.getElementById('mainContent');
   var username = document.getElementById('login');
   var logoutLink = document.getElementById('logout');
+  data = data.reverse();
   logoutLink.addEventListener('click', logout);
 
   if (window.localStorage.username) {
@@ -40,50 +26,51 @@ function loadPage(data) {
     username.innerText = 'LOGIN';
     username.style.cursor = 'cursor';
   }
-  // allMessages.innerHTML = '';
-  data.forEach(function (value, index) {
+  allMessages.innerHTML = '';
+  data.forEach(function(value, index) {
     var messageContainer = document.createElement('div');
-    messageContainer.classList.add('container');
     var count = document.createElement('div');
+    var contentLeft = document.createElement('div');
+    var imageUp = document.createElement('img');
+    var voteText = document.createElement('span');
+    var imageDown = document.createElement('img');
+    var contentRight = document.createElement('div');
+    var title = document.createElement('span');
+    var submitTime = document.createElement('span');
+    var submitTimeTxt = new Date().getTime() - parseInt(value.timestamp);
+    console.log(new Date().getTime());
+    console.log(value.timestamp);
+    var change = document.createElement('span');
+    var modify = document.createElement('a');
+    var remove = document.createElement('a');
+    messageContainer.classList.add('container');
     count.classList.add('count');
     count.innerHTML = index + 1;
-    var contentLeft = document.createElement('div');
     contentLeft.classList.add('content-left');
-    var imageUp = document.createElement('img');
     imageUp.classList.add('upvote');
     imageUp.classList.add('vote-img');
     imageUp.src = '../imgs/upvote.png';
-    imageUp.addEventListener('click', function () { changeVoteState(value.id, 'upvote', imageUp, imageDown) });
+    imageUp.addEventListener('click', function() { changeVoteState(value.id, 'upvote', imageUp, imageDown) });
     imageUp.addEventListener('click', changeVote);
-    var voteText = document.createElement('span');
     voteText.innerText = value.score;
-    var imageDown = document.createElement('img');
     imageDown.classList.add('downvote');
     imageDown.classList.add('vote-img');
     imageDown.src = '../imgs/downvote.png';
-    imageDown.addEventListener('click', function () { changeVoteState(value.id, 'downvote', imageUp, imageDown) });
+    imageDown.addEventListener('click', function() { changeVoteState(value.id, 'downvote', imageUp, imageDown) });
     imageDown.addEventListener('click', changeVote);
-    var contentRight = document.createElement('div');
     contentRight.classList.add('content-right');
-    var title = document.createElement('span');
     title.classList.add('title');
     title.innerHTML = value.title;
-    var submitTime = document.createElement('span');
     submitTime.classList.add('submit-time');
-    var submitTimeTxt = new Date().getTime() - parseInt(value.timestamp);
     submitTimeTxt = formatTime(submitTimeTxt);
     submitTime.innerHTML = `submitted ${submitTimeTxt} ago by ${value.owner || 'anonymous'}`;
-    var change = document.createElement('span');
     change.classList.add('change');
-    var modify = document.createElement('a');
-    modify.addEventListener('click', function () { deliver(value.href, value.title, value.id, modify) });
-    // modify.href = './modify.html';
+    modify.addEventListener('click', function() { deliver(value.href, value.title, value.id, modify) });
     modify.href = '##';
     modify.innerHTML = 'modify';
-    var remove = document.createElement('a');
     remove.href = '##';
     remove.innerHTML = 'remove';
-    remove.addEventListener('click', function () { deleteInfo(value.id) });
+    remove.addEventListener('click', function() { deleteInfo(value.id) });
     contentLeft.appendChild(imageUp);
     contentLeft.appendChild(voteText);
     contentLeft.appendChild(imageDown);
@@ -99,19 +86,18 @@ function loadPage(data) {
   })
 }
 function formatTime(seconds) {
-  var theSecond = parseInt(seconds);
+  var theSecond = Math.ceil(seconds / 1000) < 0 ? 0 : Math.ceil(seconds / 1000);
   var theMinute = 0;
   var theHour = 0;
+  var result = "" + Math.ceil(theSecond % 60) + " seconds ";
   if (theSecond > 60) {
     theMinute = parseInt(theSecond / 60);
     theSecond = parseInt(theSecond % 60);
-
     if (theMinute > 60) {
       theHour = parseInt(theMinute / 60);
       theMinute = parseInt(theMinute % 60);
     }
   }
-  var result = "" + parseInt(theSecond) + " seconds ";
   if (theMinute > 0) {
     result = "" + parseInt(theMinute) + " minutes " + result;
   }
@@ -181,21 +167,6 @@ function votedOrNot(picUp, picDown) {
     return 'notvote'
   }
 }
-function postInfo(request) {
-  let request = request;
-  request.forEach(function (value) {
-    fetch(url + '/posts', {
-      method: 'post',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(value)
-    }).then(function (response) {
-      console.log('success');
-    })
-  })
-}
 function deleteInfo(id) {
   event.preventDefault();
   fetch(url + '/posts/' + id, {
@@ -203,7 +174,7 @@ function deleteInfo(id) {
     headers: {
       'Accept': 'application/json'
     }
-  }).then(function (response) {
+  }).then(function(response) {
     console.log('success');
     var allMessages = document.getElementById('mainContent');
     allMessages.innerHTML = '';
@@ -230,7 +201,7 @@ function putVote(id, token) {
     headers: {
       'Accept': 'application/json'
     }
-  }).then(function (response) {
+  }).then(function(response) {
     console.log(response);
   })
 }
@@ -240,10 +211,11 @@ function deliver(href, title, id, modifylink) {
 function logout() {
   var myStorage = window.localStorage;
   var username = document.getElementById('login');
+  var logoutLink = document.getElementById('logout');
   myStorage.removeItem('username');
   username.innerText = 'LOGIN';
   username.href = '../html/login.html';
   username.classList.remove('loginSuccess');
-  var logoutLink = document.getElementById('logout');
   logoutLink.style.display = 'none';
 }
+setInterval(init, 3 * 1000)

@@ -10,10 +10,11 @@
 }
 
 #thumbnail {
-  width: 560px;
+    width: 560px;
 }
+
 #thumbnail img {
-  height: 50px;
-  width: 50px;
-  margin: 0 10px;
+    height: 50px;
+    width: 50px;
+    margin: 0 10px;
 }

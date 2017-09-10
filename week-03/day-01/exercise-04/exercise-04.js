@@ -8,7 +8,7 @@ var volvo = {
   fuel: 23,
   consumption: 0.06,
   kms: 43000,
-  ride: function (km) {
+  ride: function(km) {
     this.kms += km;
     this.fuel -= km * this.consumption;
   }
@@ -25,7 +25,7 @@ var ferrari = {
   fuel: 0,
   consumption: 0.12,
   kms: 9000,
-  ride: function (km) {
+  ride: function(km) {
     this.kms += km;
     this.fuel -= km * this.consumption;
   }
@@ -53,7 +53,7 @@ var tesla = {
   battery: 100,
   kms: 1000,
   consumption: 0.2,
-  ride: function (km) {
+  ride: function(km) {
     this.kms += km;
     this.battery -= km * this.consumption;
   }

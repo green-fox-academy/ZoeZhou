@@ -1,3 +1,4 @@
+'use strict';
 var elevator = {
     floors: 0,
     currentFloor: 0,
@@ -7,7 +8,7 @@ var elevator = {
     buttonAdd: document.getElementsByClassName('add')[0],
     buttonRemove: document.getElementsByClassName('remove')[0]
 }
-elevator.drawElevator = function (length) {
+elevator.drawElevator = function(length) {
     var container = document.getElementsByClassName('elevator')[0];
     for (var i = 0; i < length; i++) {
         var floor = document.createElement('p');
@@ -16,7 +17,7 @@ elevator.drawElevator = function (length) {
     }
     this.floors = document.getElementsByClassName('floor');
 };
-elevator.peopleChange = function (n) {
+elevator.peopleChange = function(n) {
     this.currentPeople += n;
     this.height = this.floors.length - 1;
     if (this.currentPeople < 0) {
@@ -27,7 +28,7 @@ elevator.peopleChange = function (n) {
     this.floors[this.height - this.currentFloor].innerText = this.currentPeople;
 
 };
-elevator.floorChange = function (n) {
+elevator.floorChange = function(n) {
     this.currentFloor += n;
     if (this.currentFloor < 0) {
         this.currentFloor = 0;
@@ -49,7 +50,7 @@ elevator.floorChange = function (n) {
     }
 };
 elevator.drawElevator(10);
-elevator.buttonAdd.setAttribute('onClick', 'elevator.peopleChange(' + 1 + ')');
-elevator.buttonRemove.setAttribute('onClick', 'elevator.peopleChange(' + (-1) + ')');
-elevator.buttonUp.setAttribute('onClick', 'elevator.floorChange(' + 1 + ')');
-elevator.buttonDown.setAttribute('onClick', 'elevator.floorChange(' + (-1) + ')');
+elevator.buttonAdd.addEventListener('click', function() { elevator.peopleChange(1) });
+elevator.buttonRemove.addEventListener('click', function() { elevator.peopleChange(-1) });
+elevator.buttonUp.addEventListener('click', function() { elevator.floorChange(1) });
+elevator.buttonDown.addEventListener('click', function() { elevator.floorChange(-1) });

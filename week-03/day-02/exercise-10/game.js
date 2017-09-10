@@ -11,12 +11,12 @@ function CandyShop(candiesNum, lollypopsNum) {
   lollypops.innerText = '🍭'.repeat(this.lollypopsNum);
   speed.innerText = this.speedNum;
 
-  this.createCandies = function () {
+  this.createCandies = function() {
     this.candiesNum += 1;
     candies.innerText = this.candiesNum;
     this.endGame();
   };
-  this.buyLollypops = function () {
+  this.buyLollypops = function() {
     if (this.candiesNum < 100) {
       console.log(`sorry, you don't have enough candies..`);
       return false;
@@ -29,12 +29,12 @@ function CandyShop(candiesNum, lollypopsNum) {
       speed.innerText = this.speedNum;
     }
   };
-  this.candyMachine = function (t) {
+  this.candyMachine = function(t) {
     this.candiesNum += this.speedNum;
     candies.innerText = this.candiesNum;
     this.endGame();
   };
-  this.endGame = function () {
+  this.endGame = function() {
     if (this.candiesNum > 10000) {
       alert('you win');
       window.location.reload();
@@ -51,7 +51,7 @@ btnCreateCandies.addEventListener('click', candy.createCandies.bind(candy));
 btnBuyLollypops.addEventListener('click', candy.buyLollypops.bind(candy));
 var t = 1000;
 var timer = setInterval(candy.candyMachine.bind(candy), 1 * t);
-btnCandyMachine.addEventListener('click', function () {
+btnCandyMachine.addEventListener('click', function() {
   clearInterval(timer);
   t /= 10;
   timer = setInterval(candy.candyMachine.bind(candy), 1 * t);

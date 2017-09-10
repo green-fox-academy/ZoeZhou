@@ -9,15 +9,15 @@
 
 function Circle(radius) {
   this.radius = radius;
-  this.getCircumference = function () {
+  this.getCircumference = function() {
     let pi = 3.1415926;
     return 2 * pi * this.radius;
   };
-  this.getArea = function () {
+  this.getArea = function() {
     let pi = 3.14;
     return pi * this.radius * this.radius;
   };
-  this.toString = function () {
+  this.toString = function() {
     return `Radius: ${this.radius}, Circumference: ${(this.getCircumference)()}, Area: ${(this.getArea)()}`;
   }
 }

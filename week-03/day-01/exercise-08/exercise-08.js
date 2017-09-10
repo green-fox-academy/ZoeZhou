@@ -6,16 +6,17 @@
 // Every animal can eat() which decreases their hunger by one
 // Every animal can drink() which decreases their thirst by one
 // Every animal can play() which increases both by one
+'use strict';
 function Animal(hunger, thirst) {
   this.hunger = 50;
   this.thirst = 50;
-  this.eat = function () {
+  this.eat = function() {
     this.hunger -= 1;
   };
-  this.drink = function () {
+  this.drink = function() {
     this.thirst -= 1;
   };
-  this.play = function () {
+  this.play = function() {
     this.hunger -= 1;
     this.thirst -= 1;
   }
@@ -37,7 +38,7 @@ console.log(cat.thirst);
 function Farm(list, slots) {
   this.list = list;
   this.slots = slots;
-  this.breed = function (breed) {
+  this.breed = function(breed) {
     if (this.slots > 1) {
       this.list.push(breed);
       this.slots -= 1;
@@ -46,7 +47,7 @@ function Farm(list, slots) {
       return false;
     }
   };
-  this.slaughter = function () {
+  this.slaughter = function() {
     this.list.pop();
     this.slots += 1;
   };

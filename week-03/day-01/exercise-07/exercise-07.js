@@ -6,12 +6,13 @@
 // Every sharpie is created with a default 100 as inkAmount
 // We can use() the sharpie objects
 // which decreases inkAmount by the width
+'use strict';
 
 function Sharpie(color, width, inkAmount) {
   this.color = color;
   this.width = width;
   this.inkAmount = 100;
-  this.use = function () {
+  this.use = function() {
     this.inkAmount -= width;
   }
 }

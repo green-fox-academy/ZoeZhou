@@ -1,9 +1,11 @@
-window.addEventListener('load', init);
+'use strict';
 var url = 'https://wakeful-vision.glitch.me/api/messages';
 var messagesKeeper;
+var container = document.getElementById('container');
+init();
 function init() {
-  fetch(url).then(function (response) {
-    response.json().then(function (data) {
+  fetch(url).then(function(response) {
+    response.json().then(function(data) {
       messagesKeeper = data.messages;
       loadPage(data.messages);
     })
@@ -12,13 +14,13 @@ function init() {
   submit.addEventListener('click', postInfo);
 }
 function loadPage(data) {
-  var container = document.getElementById('container');
   container.innerHTML = '';
-  for (var i = 0; i < data.length; i++) {
+  data.forEach(function(value) {
     var message = document.createElement('span');
-    message.innerText = `${data[i].name} : ${data[i].message}`;
+    message.innerText = `${value.name} : ${value.message}`;
     container.appendChild(message);
-  }
+  }, this);
+  container.scrollTop = container.scrollHeight;
 }
 function postInfo() {
   var userName = document.getElementById('user-name').value.trim();
@@ -34,14 +36,12 @@ function postInfo() {
         'Content-type': 'application/json',
       },
       body: JSON.stringify(request)
-    }).then(function (response) {
+    }).then(function(response) {
       messagesKeeper.push(request);
       document.getElementById('user-name').value = '';
       document.getElementById('input').value = '';
       loadPage(messagesKeeper);
-      var container = document.getElementById('container');
-      container.scrollTop = container.scrollHeight;
-    }).catch(function (error) {
+    }).catch(function(error) {
       console.log(error);
       return;
     });
@@ -49,3 +49,4 @@ function postInfo() {
     return;
   }
 }
+setInterval(init, 5000)

@@ -11,10 +11,11 @@ function printNumber(num) {
 selectLastEvenNumber([2, 5, 7, 8, 9, 11], printNumber); // should print 8
 
 function selectLastEvenNumber(array, printFunction) {
-  for (var i = array.length - 1; i >= 0; i--) {
-    if (array[i] % 2 === 0) {
-      printFunction(array[i]);
-      return;
+  array = array.reverse();
+  array.some(function(value) {
+    if (value % 2 === 0) {
+      console.log(value);
+      return true;
     }
-  }
+  })
 }

@@ -13,5 +13,5 @@ var zoe = {
   age: 21,
   skill: 'JavaScript'
 };
-setTimeout(function () { consoleMyInfo(zoe) }, 3 * 1000);
+setTimeout(function() { consoleMyInfo(zoe) }, 3 * 1000);
 

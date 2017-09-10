@@ -8,7 +8,7 @@
 // that have the given type
 function CarStore(cars) {
   this.cars = cars;
-  this.addCar = function (type, price, year) { 
+  this.addCar = function(type, price, year) { 
     var obj = {
       type: type,
       price: price,
@@ -16,17 +16,17 @@ function CarStore(cars) {
     };
     this.cars.push(obj);
   };
-  this.getSumPrice = function () {
+  this.getSumPrice = function() {
     var sumPrice = 0;
-    this.cars.forEach(function (value) {
+    this.cars.forEach(function(value) {
       sumPrice += value.price;
     })
     return sumPrice;
   };
-  this.getOldestCarType = function () {
+  this.getOldestCarType = function() {
     var year = new Date().getFullYear();
     var indexNeed = 0;
-    this.cars.forEach(function (value, index) {
+    this.cars.forEach(function(value, index) {
       if (value.year < year) {
         year = value.year;
         indexNeed = index;
@@ -34,8 +34,8 @@ function CarStore(cars) {
     })
     return this.cars[indexNeed].type;
   };
-  this.deleteCarByType = function (type) {
-    this.cars = this.cars.filter(function (value) {
+  this.deleteCarByType = function(type) {
+    this.cars = this.cars.filter(function(value) {
       return value.type !== type;
     })
   };

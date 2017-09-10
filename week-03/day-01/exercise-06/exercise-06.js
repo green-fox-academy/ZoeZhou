@@ -4,7 +4,7 @@ function countLetterInString(string, letter) {
   if (typeof string !== "string") {
     return 0;
   }
-  return Array.from(string).reduce(function (sum, value) {
+  return Array.from(string).reduce(function(sum, value) {
     if (letter === value) {
       return sum + 1;
     }

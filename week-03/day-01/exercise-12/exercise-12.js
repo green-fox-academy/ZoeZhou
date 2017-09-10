@@ -15,6 +15,7 @@
 // example: if the rocket is a falcon1 and has fuel level 3, then it should return 2.
 // getStats()
 // it should return its stats as a string like: "name: falcon9, fuel: 11, launches: 1"
+'use strict';
 function Rocket(type, fuel, launchNum) {
   if (type !== 'falcon1' && type !== 'falcon9') {
     console.log('input error!');
@@ -31,7 +32,7 @@ function Rocket(type, fuel, launchNum) {
   } else {
     this.launchNum = launchNum;
   }
-  this.launch = function () {
+  this.launch = function() {
     if (this.type === 'falcon1') {
       this.fuel -= 1;
     } else {
@@ -39,7 +40,7 @@ function Rocket(type, fuel, launchNum) {
     }
     this.launchNum += 1;
   };
-  this.refill = function () {
+  this.refill = function() {
     let amountFill;
     let usage;
     if (this.type === 'falcon1') {
@@ -53,7 +54,7 @@ function Rocket(type, fuel, launchNum) {
     }
     return usage;
   };
-  this.getStats = function () {
+  this.getStats = function() {
     return `name: ${this.type}, fuel: ${this.fuel}, launches: ${this.launchNum}`;
   };
 }
@@ -78,27 +79,27 @@ function SpaceX(fuel) {
   this.fuel = fuel;
   this.rockets = [];
   this.launches = 0;
-  this.addRocket = function (rocket) {
+  this.addRocket = function(rocket) {
     this.rockets.push(rocket);
     this.launches += rocket.launchNum;
   };
-  this.refill_all = function () {
+  this.refill_all = function() {
     let that = this;
-    this.rockets.forEach(function (value) {
+    this.rockets.forEach(function(value) {
       that.fuel -= value.refill();
     })
   };
-  this.launch_all = function () {
+  this.launch_all = function() {
     let that = this;
-    this.rockets.forEach( function (value) {
+    this.rockets.forEach( function(value) {
       value.launch();
       that.launches += 1;
     })
   };
-  this.buy_fuel = function (amount) {
+  this.buy_fuel = function(amount) {
     this.fuel += amount;
   };
-  this.getStats = function () {
+  this.getStats = function() {
     return `rocket: ${this.rockets.length}, fuel: ${this.fuel}, launches: ${this.launches}`;
   }
 }

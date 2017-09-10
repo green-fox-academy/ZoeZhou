@@ -9,15 +9,15 @@ function printFruits(fruit) {
   console.log(fruit);
   return;
 }
-setTimeout(function () {
+setTimeout(function() {
   printFruits('apple')
 }, 0);
-setTimeout(function () {
+setTimeout(function() {
   printFruits('pear')
 }, 1 * 1000);
-setTimeout(function () {
+setTimeout(function() {
   printFruits('melon')
 }, 3 * 1000);
-setTimeout(function () {
+setTimeout(function() {
   printFruits('grapes')
 }, 5 * 1000);

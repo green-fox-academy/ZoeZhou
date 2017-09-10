@@ -17,7 +17,7 @@
 var car = {
   petrolLevel: 0,
   petrolCapacity: 50,
-  refill: function (amount) {
+  refill: function(amount) {
     var consumed = this.petrolCapacity - this.petrolLevel;
     this.petrolLevel = this.petrolCapacity;
     return consumed;
@@ -25,7 +25,7 @@ var car = {
 }
 var station = {
   petrolStorage: 3000,
-  provide: function (car) {
+  provide: function(car) {
     this.petrolStorage -= car.refill(this.petrolStorage);
   }
 }

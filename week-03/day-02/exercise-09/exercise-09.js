@@ -4,7 +4,7 @@
 // If the user clicks the button 3 times, and 5 seconds is already elapsed since the page is loaded, 
 // a text should appear under the button: 5 seconds elapsed and clicked 3 times
 var i = 1;
-var t = setInterval(function () { 
+var t = setInterval(function() { 
   console.log(i++) ;
   if(i > 5) {
     clearInterval(t);
@@ -17,7 +17,7 @@ function clickThreeTimes() {
   var clickCount = 0;
   var button = document.getElementById('click');
   var text = document.getElementById('text');
-  button.addEventListener('click', function () {
+  button.addEventListener('click', function() {
     clickCount += 1;
     if (clickCount === 3) {
       text.style.display = 'block';

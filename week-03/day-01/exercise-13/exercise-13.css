@@ -49,6 +49,6 @@ p {
     left: 50px;
 }
 
-.fadeout{
+.fadeout {
     transform: scale(0, 1);
 }
