@@ -1,0 +1,46 @@
+body {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    width: 800px;
+}
+
+nav {
+  display: flex;
+  height: 80px;
+  align-items: center;
+  background-color: purple;
+}
+
+.link {
+    height: 50px;
+    width: 100px;
+    background-color: cyan;
+    margin: 0 10px;
+}
+
+.link-one {
+  flex: 0 0 150px;
+}
+
+.link-three {
+  flex: 0 0 120px;
+}
+
+main {
+  display: flex;
+}
+
+.content {
+  flex: 3 0 0;
+  height: 700px;
+  background-color: yellow;
+}
+
+.slidebar {
+  flex: 1 0 0;
+  height: 700px;
+  background-color: green;
+}
