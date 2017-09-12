@@ -62,6 +62,7 @@ app.get('/profile/:id', function(req, res){
   ```javascript
   var bodyParser = require('body-parser');
   var urlencodedParser = bodyParser.urlencoded({ extended: false });
+  var jsonParser = bodyParser.json();
 
   app.post('/contact', urlencodedParser, function (req, res) {
   console.log(req.body);

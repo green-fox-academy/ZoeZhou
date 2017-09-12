@@ -9,7 +9,7 @@
   - refactor code
   - repeat
 - what is a unit?
-  - the smallest testable part of ann application
+  - the smallest testable part of an application
   - a function, interface, class
 - what is unit testing?
 - what is the difference between TDD and unit testing?
