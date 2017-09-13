@@ -11,7 +11,7 @@ app.get('/', function (req, res) {
 })
 
 app.get('/students', function (req, res) {
-  let obj;
+  var obj = {students:[]};
   MongoClient.connect(url, function (err, db) {
     if (err) {
       console.log('Unable to connect to the MongoDB server. Error:', err);
@@ -19,10 +19,9 @@ app.get('/students', function (req, res) {
     console.log('Connection established to ' + url);
     var collection = db.collection('students');
     collection.find().toArray(function(err, docs) {
-      obj = JSON.stringify(docs);
+      obj.students = JSON.stringify(docs);
+      res.send(obj);
     });
-    console.log(obj);
-    res.send(obj);
     db.close();
   });
   console.log('1111');
