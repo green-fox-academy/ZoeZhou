@@ -60,16 +60,66 @@ app.put('/posts/:id/upvote', function (req, res) {
     }
     var collection = db.collection('messages');
     var queryId = parseInt(req.params.id);
-    collection.find({ id: 1 }).toArray(function (err, docs) {
-      console.log(docs);
+    collection.find({ id: queryId }).toArray(function (err, docs) {
       docs[0].score += 1;
-      collection.update({id: queryId}, {$set:{'score': docs[0].score}});
+      collection.update({ id: queryId }, { $set: { 'score': docs[0].score } });
       res.setHeader("Content-Type", "application/json");
       res.send(JSON.stringify(docs[0]));
       db.close();
     })
   })
-})
+});
+app.put('/posts/:id/downvote', function (req, res) {
+  MongoClient.connect(url, function (err, db) {
+    if (err) {
+      console.log('Unable to connect to the MongoDB server. Error:', err);
+    }
+    var collection = db.collection('messages');
+    var queryId = parseInt(req.params.id);
+    collection.find({ id: queryId }).toArray(function (err, docs) {
+      docs[0].score -= 1;
+      collection.update({ id: queryId }, { $set: { 'score': docs[0].score } });
+      res.setHeader("Content-Type", "application/json");
+      res.send(JSON.stringify(docs[0]));
+      db.close();
+    })
+  })
+});
+app.delete('/posts/:id', function (req, res) {
+  MongoClient.connect(url, function (err, db) {
+    if (err) {
+      console.log('Unable to connect to the MongoDB server. Error:', err);
+    }
+    var collection = db.collection('messages');
+    var queryId = parseInt(req.params.id);
+    collection.find({ id: queryId }).toArray(function (err, docs) {
+      collection.deleteOne({ 'id': queryId }, function (err, results) {
+        res.setHeader("Content-Type", "application/json");
+        res.send(JSON.stringify(docs[0]));
+        db.close();
+      })
+    })
+  })
+});
+app.put('/posts/:id', jsonParser, function (req, res) {
+  MongoClient.connect(url, function (err, db) {
+    if (err) {
+      console.log('Unable to connect to the MongoDB server. Error:', err);
+    }
+    var collection = db.collection('messages');
+    var queryId = parseInt(req.params.id);
+    var modifyTitle = req.body.title;
+    var modifyHref = req.body.href;
+
+    collection.update({ id: queryId }, { $set: { 'title': modifyTitle, 'href': modifyHref } }, function (err, result) {
+      collection.find({ id: queryId }).toArray(function (err, docs) {
+        res.setHeader("Content-Type", "application/json");
+        res.send(JSON.stringify(docs[0]));
+        db.close();
+      })
+    });
+  })
+});
 
 function initDataBase() {
   var initMessages = [
