@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>modify</title>
+    <link rel="stylesheet" href="../css/modify.css">
+</head>
+
+<body>
+    <header>
+        <span><a href="./index.html">MAIN -</a>  
+            <a href="./addpost.html" class="create-post">CREATE A NEW POST</a>
+            <a href="#" class="login">LOGIN</a>
+        </span>
+    </header>
+    <main>
+        <h2>modify post <a href="./index.html" id="idNum"># 1</a></h2>
+        <form action="" method="post" id="post-form">
+            <div class="part-href">
+                <label for="href">href</label>
+                <input type="text" name="href" id="href">
+            </div>
+            <div class="part-title">
+                <label for="title"><span>*</span>title</label>
+                <textarea name="title" id="title" cols="" rows="3" required="required"></textarea>
+            </div>
+            <p>*required</p>
+            <!-- <button type="submit" class="submit">modify</button> -->
+        </form>
+        <button id="submit">Submit</button>
+        <span class="tips">
+            relocate to main page after <span class="count-down">3</span> seconds...
+        </span>
+    </main>
+    <script src="../js/modify.js"></script>
+</body>
+
+</html>

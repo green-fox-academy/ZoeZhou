@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" type="image/x-icon" href="https://www.redditstatic.com/favicon.ico">
+    <link rel="stylesheet" href="../css/addpost.css">
+    <title>addpost</title>
+</head>
+
+<body>
+    <header>
+        <span><a href="./index.html">MAIN -</a> 
+            <a href="#" class="create-post">CREATE A NEW POST</a>
+            <a href="#" class="login">LOGIN</a>
+        </span>
+    </header>
+    <main>
+        <h2>submit to <a href="./index.html">the page</a></h2>
+        <p class="tips-top">The meaning of this block is to show off your CSS skills. Przestan <br> marnowac czas, tlumazczaz bezsensowny tekst.
+        </p>
+        <form method="post" id="post-form">
+            <div class="part-href">
+                <label for="href">href</label>
+                <input type="text" name="href" id="href">
+            </div>
+            <div class="part-title">
+                <label for="title"><span>*</span>title</label>
+                <textarea name="title" id="title" cols="" rows="3" required="required"></textarea>
+            </div>
+            <div class="part-options">
+                <span>options</span>
+                <input type="checkbox" name="anonymous" id="anonymous">
+                <label for="anonymous">post as anonymous</label>
+            </div>
+            <p>*required</p>
+            <!-- <input type="submit" class="submit" id="submit"/> -->
+        </form>
+        <button id="submit">Submit</button>
+        <span class="tips">
+            relocate to main page after <span class="count-down">3</span> seconds...
+        </span>
+    </main>
+
+    <script src="../js/addpost.js"></script>
+</body>
+
+</html>
