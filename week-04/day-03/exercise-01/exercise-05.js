@@ -22,9 +22,11 @@ app.get('/students', function (req, res) {
   var fieldsStr = {
     _id: 0
   };
-  fields.forEach(function (value) {
-    fieldsStr[value] = 1;
-  }, this);
+  if (fields !== undefined) {
+    fields.forEach(function (value) {
+      fieldsStr[value] = 1;
+    }, this);
+  }
   MongoClient.connect(url, function (err, db) {
     if (err) {
       console.log('Unable to connect to the MongoDB server. Error:', err);
