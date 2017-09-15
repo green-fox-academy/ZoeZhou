@@ -203,7 +203,7 @@ function putVote(id, token) {
   })
 }
 function deliver(href, title, id, modifylink) {
-  modifylink.href = `../html/modify.html?id=${id}&href=${href}&title=${title}`;
+  modifylink.href = `/modify?id=${id}&href=${href}&title=${title}`;
 }
 function logout() {
   var myStorage = window.localStorage;
@@ -211,7 +211,7 @@ function logout() {
   var logoutLink = document.getElementById('logout');
   myStorage.removeItem('username');
   username.innerText = 'LOGIN';
-  username.href = '../html/login.html';
+  username.href = '/login';
   username.classList.remove('loginSuccess');
   logoutLink.style.display = 'none';
 }

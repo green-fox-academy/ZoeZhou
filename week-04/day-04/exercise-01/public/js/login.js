@@ -22,6 +22,6 @@ function relocated() {
     seconds.innerText = newSeconds;
   }, 900)
   setTimeout(function () {
-    window.location.href = '../html/index.html'
+    window.location.href = '/index'
   }, 3000)
 }
