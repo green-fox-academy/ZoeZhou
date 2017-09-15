@@ -12,6 +12,11 @@ window.addEventListener('load', function () {
 function sendData() {
   var href = document.getElementById('href');
   var title = document.getElementById('title');
+  var checkbox = document.getElementById('anonymous');
+  var user = document.cookie.split(";")[0].split("=")[1] || 'anonymous';
+  if (checkbox.checked) {
+    user = 'anonymous'
+  }
   var obj = {
     title: title.value.trim(),
     href: href.value
@@ -25,7 +30,8 @@ function sendData() {
     method: 'post',
     headers: {
       'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Username': user
     },
     body: JSON.stringify(obj)
   }).then(function (response) {

@@ -20,14 +20,12 @@ function login() {
     return response.json();
   }).then(function (result) {
     if (result.userName !== 'undefined') {
-      // document.cookie = `username=${result.userName}`;
       setCookie('username', result.userName);
       relocated();
     } else {
       alert('username is not exist');
       return false;
     }
-    console.log(result);
   })
 }
 

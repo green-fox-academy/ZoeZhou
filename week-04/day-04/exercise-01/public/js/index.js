@@ -12,7 +12,6 @@ function init() {
 function checkoutLogin(username, logoutLink) {
   if (document.cookie.split(";")[0].split("=")[1] !== undefined) {
     username.innerText = document.cookie.split(";")[0].split("=")[1];
-    console.log(document.cookie.split(";")[0].split("=")[1]);
     username.href = '##';
     username.classList.add('loginSuccess');
     logoutLink.style.display = 'inline-block';
@@ -61,6 +60,8 @@ function loadPage(data) {
     contentRight.classList.add('content-right');
     title.classList.add('title');
     title.innerHTML = value.title;
+    title.setAttribute('data-owner', value.owner);
+    setEnabled(title, modify, remove);
     submitTime.classList.add('submit-time');
     submitTimeTxt = formatTime(submitTimeTxt);
     submitTime.innerHTML = `submitted ${submitTimeTxt} ago by ${value.owner || 'anonymous'}`;
@@ -169,13 +170,14 @@ function votedOrNot(picUp, picDown) {
 }
 function deleteInfo(id) {
   event.preventDefault();
+  var user = document.cookie.split(";")[0].split("=")[1] || 'anonymous';
   fetch(url + '/posts/' + id, {
     method: 'delete',
     headers: {
-      'Accept': 'application/json'
+      'Accept': 'application/json',
+      'Username': user
     }
   }).then(function (response) {
-    console.log('success');
     var allMessages = document.getElementById('mainContent');
     allMessages.innerHTML = '';
     init()
@@ -201,8 +203,6 @@ function putVote(id, token) {
     headers: {
       'Accept': 'application/json'
     }
-  }).then(function (response) {
-    console.log(response);
   })
 }
 function deliver(href, title, id, modifylink) {
@@ -232,4 +232,12 @@ function getCookie(name) {
     return unescape(arr[2]);
   else
     return null;
-} 
+}
+
+function setEnabled(title, modify, remove) {
+  if (title.getAttribute('data-owner') === 'anonymous' || title.getAttribute('data-owner')===getCookie('username')) {
+  } else {
+    modify.style.visibility = 'hidden';
+    remove.style.visibility = 'hidden';
+  }
+}

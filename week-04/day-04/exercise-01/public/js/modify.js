@@ -31,6 +31,7 @@ function modify() {
     title: null,
     href: null
   };
+  var user = document.cookie.split(";")[0].split("=")[1] || 'anonymous';
   content.href = href.value;
   content.title = title.value.trim();
   if (content.title.length <= 0) {
@@ -41,7 +42,8 @@ function modify() {
     method: 'PUT',
     headers: {
       'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Username': user
     },
     body: JSON.stringify(content)
   }).then(function (response) {

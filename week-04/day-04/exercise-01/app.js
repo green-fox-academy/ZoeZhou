@@ -1,5 +1,4 @@
 'use strict'
-
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongodb = require('mongodb');
@@ -9,7 +8,6 @@ var url = 'mongodb://localhost:27017/reddit';
 var jsonParser = bodyParser.json();
 
 app.use('/', express.static('public'))
-
 app.get('/', function (req, res) {
   res.send('hello, world');
 });
@@ -26,9 +24,6 @@ app.get('/modify', function (req, res) {
   res.sendFile(__dirname + '/public/html/modify.html');
 });
 
-
-
-
 app.get('/posts', function (req, res) {
   MongoClient.connect(url, function (err, db) {
     var collection = db.collection('messages');
@@ -44,6 +39,7 @@ app.get('/posts', function (req, res) {
   });
 });
 app.post('/posts', jsonParser, function (req, res) {
+  var user = req.headers.username;
   MongoClient.connect(url, function (err, db) {
     var collection = db.collection('messages');
     var reqBody = {
@@ -51,7 +47,8 @@ app.post('/posts', jsonParser, function (req, res) {
       'href': req.body.href,
       'id': 3,
       'timestamp': new Date().getTime(),
-      'score': 0
+      'score': 0,
+      'owner': user
     };
     collection.find().sort({ timestamp: -1 }).limit(1).toArray(function (err, docs) {
       reqBody.id = docs[0].id + 1;
@@ -103,13 +100,14 @@ app.delete('/posts/:id', function (req, res) {
   })
 });
 app.put('/posts/:id', jsonParser, function (req, res) {
+  var user = req.headers.username;
   MongoClient.connect(url, function (err, db) {
     var collection = db.collection('messages');
     var queryId = parseInt(req.params.id);
     var modifyTitle = req.body.title;
     var modifyHref = req.body.href;
     var modifyDate = new Date().getTime();
-    collection.update({ id: queryId }, { $set: { 'title': modifyTitle, 'href': modifyHref, 'timestamp': modifyDate } }, function (err, result) {
+    collection.update({ id: queryId }, { $set: { 'title': modifyTitle, 'href': modifyHref, 'timestamp': modifyDate, 'owner':user } }, function (err, result) {
       collection.find({ id: queryId }).toArray(function (err, docs) {
         res.setHeader("Content-Type", "application/json");
         res.send(JSON.stringify(docs[0]));
@@ -135,7 +133,6 @@ app.post('/login', jsonParser, function (req, res) {
     })
   })
 })
-
 
 var initMessages = [
   {
