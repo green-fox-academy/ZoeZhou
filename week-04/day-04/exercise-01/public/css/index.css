@@ -19,7 +19,7 @@ header .logout {
     display: none;
     position: absolute;
     font-weight: bold;
-    right: 100px;
+    right: 50px;
 }
 
 header .login {
@@ -27,6 +27,7 @@ header .login {
     font-weight: bold;
     right: 10px;
 }
+
 .loginSuccess:hover {
     cursor: default;
 }

@@ -15,6 +15,9 @@ var title = document.getElementById('title');
 var submit = document.getElementById('submit');
 submit.addEventListener('click', modify);
 autoFill();
+var username = document.getElementById('login');
+var logoutLink = document.getElementById('logout');
+checkoutLogin(username, logoutLink);
 
 function autoFill() {
   var id = document.getElementById('idNum');
@@ -57,4 +60,16 @@ function relocated() {
   setTimeout(function () {
     window.location.href = '/index'
   }, 3000)
+}
+function checkoutLogin(username, logoutLink) {
+  if (document.cookie.split(";")[0].split("=")[1] !== undefined) {
+    username.innerText = document.cookie.split(";")[0].split("=")[1];
+    console.log(document.cookie.split(";")[0].split("=")[1]);
+    username.href = '##';
+    username.classList.add('loginSuccess');
+    logoutLink.style.display = 'none';
+  } else {
+    username.innerText = 'LOGIN';
+    username.style.cursor = 'cursor';
+  }
 }

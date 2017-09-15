@@ -1,9 +1,11 @@
 var url = 'http://localhost:8080';
 window.addEventListener('load', function () {
   var submit = document.getElementById('submit');
+  var username = document.getElementById('login');
+  var logoutLink = document.getElementById('logout');
   submit.addEventListener('click', sendData);
+  checkoutLogin(username, logoutLink);
   // submit.onClick = sendData();
-
 })
 
 
@@ -45,4 +47,17 @@ function relocated() {
   setTimeout(function () {
     window.location.href = '/index'
   }, 3000)
+}
+
+function checkoutLogin(username, logoutLink) {
+  if (document.cookie.split(";")[0].split("=")[1] !== undefined) {
+    username.innerText = document.cookie.split(";")[0].split("=")[1];
+    console.log(document.cookie.split(";")[0].split("=")[1]);
+    username.href = '##';
+    username.classList.add('loginSuccess');
+    logoutLink.style.display = 'none';
+  } else {
+    username.innerText = 'LOGIN';
+    username.style.cursor = 'cursor';
+  }
 }
