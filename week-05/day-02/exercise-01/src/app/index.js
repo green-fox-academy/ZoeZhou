@@ -43,17 +43,19 @@ var ThumbNail = React.createClass({
     var images = this.props.images;
     var currentIndex = this.props.currentIndex < 7 ? 6 : this.props.currentIndex;
     var thumbLength = this.state.thumbLength;
+   
     images = images.map(function (item, index) {
+      var activeStyle = {
+        display: 'none'
+      };
       if (index + 1 > currentIndex - thumbLength && index + 1 <= currentIndex) {
         if (item.src === this.props.currentImg) {
-          return (
-            <ThumbCurrent ThumbCurrent={item.src} key={index} changeCurrentImg={this.props.changeCurrentImg} title={item.title} />
-          );
-        } else {
-          return (
-            <ThumbItem ThumbCurrent={item.src} key={index} changeCurrentImg={this.props.changeCurrentImg} title={item.title} />
-          );
-        }
+          activeStyle.display = 'inline';} else {
+            activeStyle.display = 'none';
+          }
+        return (
+          <ThumbItem ThumbCurrent={item.src} key={index} changeCurrentImg={this.props.changeCurrentImg} title={item.title} activeStyle={activeStyle}/>
+        );
       }
     }.bind(this));
     return (
@@ -80,41 +82,7 @@ var ThumbItem = React.createClass({
         <span className='popup' style={displayStyle}>{this.props.title}</span>
         <span className='triangle' style={displayStyle}></span>
         <img src={this.props.ThumbCurrent} alt='' onClick={this.handleClick} className='active' />
-      </div>
-    );
-  },
-  handleClick: function () {
-    this.props.changeCurrentImg(this.props.ThumbCurrent);
-  },
-  handleMouseOver: function () {
-    this.setState({
-      hover: true
-    });
-  },
-  handleMouseOut: function () {
-    this.setState({
-      hover: false
-    });
-  }
-});
-
-// create Thumb-Current component
-var ThumbCurrent = React.createClass({
-  getInitialState: function () {
-    return {
-      hover: false
-    }
-  },
-  render: function () {
-    var displayStyle = {
-      display: this.state.hover ? 'block' : 'none'
-    };
-    return (
-      <div onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut}>
-        <span className='popup' style={displayStyle}>{this.props.title}</span>
-        <span className='triangle' style={displayStyle}></span>
-        <img src={this.props.ThumbCurrent} alt='' onClick={this.handleClick} className='active' />
-        <span></span>
+        <span style={this.props.activeStyle}></span>
       </div>
     );
   },
