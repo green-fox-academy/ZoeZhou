@@ -6,10 +6,10 @@ var MainPicture = React.createClass({
   render: function () {
     return (
       <div className='main-picture'>
-        <Button className='prev-btn' currentImg={this.props.currentImg} images={this.props.images} changeCurrentImg={this.props.changeCurrentImg} />
+        <Button className='prev-btn' currentImg={this.props.currentImg} images={this.props.images} changeCurrentImg={this.props.changeCurrentImg} changeCurrentIndex={this.props.changeCurrentIndex} />
         <img src={this.props.currentImg} alt='no picture' />
         <Description images={this.props.images} currentImg={this.props.currentImg} />
-        <Button className='next-btn' currentImg={this.props.currentImg} images={this.props.images} changeCurrentImg={this.props.changeCurrentImg} />
+        <Button className='next-btn' currentImg={this.props.currentImg} images={this.props.images} changeCurrentImg={this.props.changeCurrentImg} changeCurrentIndex={this.props.changeCurrentIndex} />
       </div>
     );
   }
@@ -34,17 +34,26 @@ var Description = React.createClass({
 
 // create Thumb-nail component
 var ThumbNail = React.createClass({
+  getInitialState: function () {
+    return {
+      thumbLength: 6
+    };
+  },
   render: function () {
     var images = this.props.images;
+    var currentIndex = this.props.currentIndex < 7 ? 6 : this.props.currentIndex;
+    var thumbLength = this.state.thumbLength;
     images = images.map(function (item, index) {
-      if (item.src === this.props.currentImg) {
-        return (
-          <ThumbCurrent ThumbCurrent={item.src} key={index} changeCurrentImg={this.props.changeCurrentImg} title={item.title} />
-        );
-      } else {
-        return (
-          <ThumbItem ThumbCurrent={item.src} key={index} changeCurrentImg={this.props.changeCurrentImg} title={item.title} />
-        );
+      if (index + 1 > currentIndex - thumbLength && index + 1 <= currentIndex) {
+        if (item.src === this.props.currentImg) {
+          return (
+            <ThumbCurrent ThumbCurrent={item.src} key={index} changeCurrentImg={this.props.changeCurrentImg} title={item.title} />
+          );
+        } else {
+          return (
+            <ThumbItem ThumbCurrent={item.src} key={index} changeCurrentImg={this.props.changeCurrentImg} title={item.title} />
+          );
+        }
       }
     }.bind(this));
     return (
@@ -149,6 +158,7 @@ var Button = React.createClass({
       }
     }
     this.props.changeCurrentImg(this.props.images[index].src);
+    this.props.changeCurrentIndex(index + 1);
   }
 });
 
@@ -157,7 +167,7 @@ var Search = React.createClass({
   render: function () {
     return (
       <div className='search-container'>
-        <input type='text' placeholder='input title' className='search-text' onKeyDown={this.handleKeyDown} />
+        <input type='text' placeholder='input title' className='search-text' onKeyDown={this.handleKeyDown} onBlur={this.handleClick} />
         <button className='search' onClick={this.handleClick}>Search</button>
       </div>
     );
@@ -190,6 +200,7 @@ var Gallery = React.createClass({
   getInitialState: function () {
     return {
       currentImg: '../imgs/01.jpg',
+      currentIndex: 1,
       images: [
         {
           src: '../imgs/01.jpg',
@@ -201,12 +212,12 @@ var Gallery = React.createClass({
           title: 'title2',
           description: `Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.'
           'Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.`
-        }, {
+        },
+        {
           src: '../imgs/03.jpg',
           title: 'title3',
           description: `Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.`
         },
-
         {
           src: '../imgs/04.jpg',
           title: 'title4',
@@ -219,6 +230,24 @@ var Gallery = React.createClass({
           src: '../imgs/06.jpg',
           title: 'title6',
           description: 'Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc.'
+        },
+        {
+          src: '../imgs/07.jpg',
+          title: 'title7',
+          description: `Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.`
+        },
+        {
+          src: '../imgs/08.jpg',
+          title: 'title8',
+          description: `'In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.`
+        }, {
+          src: '../imgs/09.jpg',
+          title: 'title9',
+          description: 'Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.'
+        }, {
+          src: '../imgs/10.jpg',
+          title: 'title10',
+          description: 'Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc.'
         }
 
       ]
@@ -228,14 +257,19 @@ var Gallery = React.createClass({
     return (
       <main>
         <Search images={this.state.images} changeCurrentImg={this.changeCurrentImg} />
-        <MainPicture currentImg={this.state.currentImg} images={this.state.images} changeCurrentImg={this.changeCurrentImg} />
-        <ThumbNail images={this.state.images} changeCurrentImg={this.changeCurrentImg} currentImg={this.state.currentImg} />
+        <MainPicture currentImg={this.state.currentImg} images={this.state.images} changeCurrentImg={this.changeCurrentImg} changeCurrentIndex={this.changeCurrentIndex}/>
+        <ThumbNail images={this.state.images} changeCurrentImg={this.changeCurrentImg} currentImg={this.state.currentImg} currentIndex={this.state.currentIndex}/>
       </main>
     );
   },
   changeCurrentImg: function (newImgSrc) {
     this.setState({
       currentImg: newImgSrc
+    });
+  },
+  changeCurrentIndex: function (newIndex) {
+    this.setState({
+      currentIndex: newIndex
     });
   }
 });
