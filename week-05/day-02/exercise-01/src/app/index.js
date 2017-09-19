@@ -5,11 +5,11 @@ var ReactDOM = require('react-dom');
 var MainPicture = React.createClass({
   render: function () {
     return (
-      <div className="main-picture">
-        <Button className='prev-btn' currentImg={this.props.currentImg} thumblists={this.props.thumblists} changeCurrentImg={this.props.changeCurrentImg} />
-        <img src={this.props.currentImg} alt="no picture" />
-        <Description titles={this.props.titles} descriptions={this.props.descriptions} currentImg={this.props.currentImg} thumblists={this.props.thumblists} />
-        <Button className='next-btn' currentImg={this.props.currentImg} thumblists={this.props.thumblists} changeCurrentImg={this.props.changeCurrentImg} />
+      <div className='main-picture'>
+        <Button className='prev-btn' currentImg={this.props.currentImg} images={this.props.images} changeCurrentImg={this.props.changeCurrentImg} />
+        <img src={this.props.currentImg} alt='no picture' />
+        <Description images={this.props.images} currentImg={this.props.currentImg} />
+        <Button className='next-btn' currentImg={this.props.currentImg} images={this.props.images} changeCurrentImg={this.props.changeCurrentImg} />
       </div>
     );
   }
@@ -18,13 +18,13 @@ var MainPicture = React.createClass({
 //create Description component
 var Description = React.createClass({
   render: function () {
-    var thumblists = this.props.thumblists;
+    var thumblists = this.props.images.map((value) => value.src);
     var currentImg = this.props.currentImg;
-    var titles = this.props.titles;
-    var descriptions = this.props.descriptions;
+    var titles = this.props.images.map((value) => value.title);
+    var descriptions = this.props.images.map((value) => value.description);
     var index = thumblists.indexOf(currentImg);
     return (
-      <div className="description-container">
+      <div className='description-container'>
         <span className='title'>{titles[index]}</span>
         <p className='description'>{descriptions[index]}</p>
       </div>
@@ -35,21 +35,21 @@ var Description = React.createClass({
 // create Thumb-nail component
 var ThumbNail = React.createClass({
   render: function () {
-    var thumblists = this.props.thumblists;
-    thumblists = thumblists.map(function (item, index) {
-      if (item === this.props.currentImg) {
+    var images = this.props.images;
+    images = images.map(function (item, index) {
+      if (item.src === this.props.currentImg) {
         return (
-          <ThumbCurrent ThumbCurrent={item} key={index} changeCurrentImg={this.props.changeCurrentImg} />
+          <ThumbCurrent ThumbCurrent={item.src} key={index} changeCurrentImg={this.props.changeCurrentImg} title={item.title} />
         );
       } else {
         return (
-          <ThumbItem ThumbCurrent={item} key={index} changeCurrentImg={this.props.changeCurrentImg} />
+          <ThumbItem ThumbCurrent={item.src} key={index} changeCurrentImg={this.props.changeCurrentImg} title={item.title} />
         );
       }
     }.bind(this));
     return (
-      <div className="thumb-nail">
-        {thumblists}
+      <div className='thumb-nail'>
+        {images}
       </div>
     );
   }
@@ -57,10 +57,20 @@ var ThumbNail = React.createClass({
 
 // create Thumb-Nail item component
 var ThumbItem = React.createClass({
+  getInitialState: function () {
+    return {
+      hover: false
+    }
+  },
   render: function () {
+    var displayStyle = {
+      display: this.state.hover ? 'block' : 'none'
+    };
     return (
-      <div onMouseOver={this.handleMouseOver}>
-        <img src={this.props.ThumbCurrent} alt="" onClick={this.handleClick} className="active" />
+      <div onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut}>
+        <span className='popup' style={displayStyle}>{this.props.title}</span>
+        <span className='triangle' style={displayStyle}></span>
+        <img src={this.props.ThumbCurrent} alt='' onClick={this.handleClick} className='active' />
       </div>
     );
   },
@@ -68,22 +78,49 @@ var ThumbItem = React.createClass({
     this.props.changeCurrentImg(this.props.ThumbCurrent);
   },
   handleMouseOver: function () {
-    console.log(1);
+    this.setState({
+      hover: true
+    });
+  },
+  handleMouseOut: function () {
+    this.setState({
+      hover: false
+    });
   }
 });
 
 // create Thumb-Current component
 var ThumbCurrent = React.createClass({
+  getInitialState: function () {
+    return {
+      hover: false
+    }
+  },
   render: function () {
+    var displayStyle = {
+      display: this.state.hover ? 'block' : 'none'
+    };
     return (
-      <div>
-        <img src={this.props.ThumbCurrent} alt="" onClick={this.handleClick} className="active" />
+      <div onMouseOver={this.handleMouseOver} onMouseOut={this.handleMouseOut}>
+        <span className='popup' style={displayStyle}>{this.props.title}</span>
+        <span className='triangle' style={displayStyle}></span>
+        <img src={this.props.ThumbCurrent} alt='' onClick={this.handleClick} className='active' />
         <span></span>
       </div>
     );
   },
   handleClick: function () {
     this.props.changeCurrentImg(this.props.ThumbCurrent);
+  },
+  handleMouseOver: function () {
+    this.setState({
+      hover: true
+    });
+  },
+  handleMouseOut: function () {
+    this.setState({
+      hover: false
+    });
   }
 });
 
@@ -95,7 +132,7 @@ var Button = React.createClass({
     );
   },
   handleClick: function () {
-    var thumblists = this.props.thumblists;
+    var thumblists = this.props.images.map((value) => value.src);
     var currentImg = this.props.currentImg;
     var index = thumblists.indexOf(currentImg);
     if (this.props.className === 'next-btn') {
@@ -111,7 +148,7 @@ var Button = React.createClass({
         index--;
       }
     }
-    this.props.changeCurrentImg(thumblists[index]);
+    this.props.changeCurrentImg(this.props.images[index].src);
   }
 });
 
@@ -119,17 +156,26 @@ var Button = React.createClass({
 var Search = React.createClass({
   render: function () {
     return (
-      <div className="search-container">
-        <input type="text" placeholder='input title' className='search-text' onKeyDown={this.handleKeyDown}/>
-        <button className="search" onClick={this.handleClick}>Search</button>
+      <div className='search-container'>
+        <input type='text' placeholder='input title' className='search-text' onKeyDown={this.handleKeyDown} />
+        <button className='search' onClick={this.handleClick}>Search</button>
       </div>
     );
-  },  
+  },
   handleClick: function () {
-    var titleForSearch = document.getElementsByClassName('search-text')[0].value;
-    var titles = this.props.titles;
+    var titleForSearch = document.getElementsByClassName('search-text')[0].value.trim();
+    if (titleForSearch.length === 0) {
+      alert('input error');
+      return;
+    }
+    var titles = this.props.images.map((value) => value.title);
     var index = titles.indexOf(titleForSearch);
-    this.props.changeCurrentImg(this.props.thumblists[index]);
+    if (index === -1) {
+      alert('not found');
+      document.getElementsByClassName('search-text')[0].value = '';
+      return;
+    }
+    this.props.changeCurrentImg(this.props.images[index].src);
   },
   handleKeyDown: function (event) {
     var key = event.keyCode;
@@ -144,39 +190,46 @@ var Gallery = React.createClass({
   getInitialState: function () {
     return {
       currentImg: '../imgs/01.jpg',
-      thumblists: [
-        '../imgs/01.jpg',
-        '../imgs/02.jpg',
-        '../imgs/03.jpg',
-        '../imgs/04.jpg',
-        '../imgs/05.jpg',
-        '../imgs/06.jpg'
-      ],
-      titles: [
-        'title1',
-        'title2',
-        'title3',
-        'title4',
-        'title5',
-        'title6',
-      ],
-      descriptions: [
-        'In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.',
-        `Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl."
-        "Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.`,
-        `Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.`,
-        `"In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.`,
-        `Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.`,
-        `Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc.`
+      images: [
+        {
+          src: '../imgs/01.jpg',
+          title: 'title1',
+          description: 'In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.'
+        },
+        {
+          src: '../imgs/02.jpg',
+          title: 'title2',
+          description: `Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.'
+          'Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.`
+        }, {
+          src: '../imgs/03.jpg',
+          title: 'title3',
+          description: `Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.`
+        },
+
+        {
+          src: '../imgs/04.jpg',
+          title: 'title4',
+          description: `'In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.`
+        }, {
+          src: '../imgs/05.jpg',
+          title: 'title5',
+          description: 'Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.'
+        }, {
+          src: '../imgs/06.jpg',
+          title: 'title6',
+          description: 'Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc.'
+        }
+
       ]
     }
   },
   render: function () {
     return (
       <main>
-        <Search titles={this.state.titles} changeCurrentImg={this.changeCurrentImg} thumblists={this.state.thumblists}/>
-        <MainPicture currentImg={this.state.currentImg} titles={this.state.titles} descriptions={this.state.descriptions} thumblists={this.state.thumblists} changeCurrentImg={this.changeCurrentImg} />
-        <ThumbNail thumblists={this.state.thumblists} changeCurrentImg={this.changeCurrentImg} currentImg={this.state.currentImg} />
+        <Search images={this.state.images} changeCurrentImg={this.changeCurrentImg} />
+        <MainPicture currentImg={this.state.currentImg} images={this.state.images} changeCurrentImg={this.changeCurrentImg} />
+        <ThumbNail images={this.state.images} changeCurrentImg={this.changeCurrentImg} currentImg={this.state.currentImg} />
       </main>
     );
   },
@@ -188,6 +241,6 @@ var Gallery = React.createClass({
 });
 
 ReactDOM.render(
-  <Gallery/>,
+  <Gallery />,
   document.getElementsByClassName('gallery')[0]
 );
