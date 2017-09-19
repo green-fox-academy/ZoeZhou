@@ -1,0 +1,63 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    padding: 20px;
+    background-color: #ccc;
+}
+
+.main-picture {
+    height: 300px;
+    width: 600px;
+    margin: 0 auto;
+}
+
+.main-picture img {
+    float: left;
+    width: calc(100% - 100px);
+    height: 100%;
+}
+
+button {
+    width: 50px;
+    height: 300px;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: white;
+}
+
+button.prev-btn {
+    background-image: url('../imgs/arrow.svg');
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+button.next-btn {
+    background-image: url('../imgs/arrow.svg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    transform: rotate(180deg);
+}
+
+.thumb-nail {
+    width: 100%;
+    text-align: center;
+    font-size: 0;
+}
+
+.thumb-nail div {
+    width: 100px;
+    display: inline-block;
+    position: relative;
+    margin: 20px 10px 0 0;
+}
+
+.thumb-nail img {
+    width: 100%;
+    /* width: 100px;
+    margin: 20px 10px 0 0; */
+}
