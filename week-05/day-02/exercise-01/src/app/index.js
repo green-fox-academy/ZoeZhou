@@ -17,7 +17,7 @@ var MainPicture = React.createClass({
 
 //create Description component
 var Description = React.createClass({
-  render: function() {
+  render: function () {
     var thumblists = this.props.thumblists;
     var currentImg = this.props.currentImg;
     var titles = this.props.titles;
@@ -31,7 +31,6 @@ var Description = React.createClass({
     );
   }
 })
-
 
 // create Thumb-nail component
 var ThumbNail = React.createClass({
@@ -116,6 +115,30 @@ var Button = React.createClass({
   }
 });
 
+// create Search component
+var Search = React.createClass({
+  render: function () {
+    return (
+      <div className="search-container">
+        <input type="text" placeholder='input title' className='search-text' onKeyDown={this.handleKeyDown}/>
+        <button className="search" onClick={this.handleClick}>Search</button>
+      </div>
+    );
+  },  
+  handleClick: function () {
+    var titleForSearch = document.getElementsByClassName('search-text')[0].value;
+    var titles = this.props.titles;
+    var index = titles.indexOf(titleForSearch);
+    this.props.changeCurrentImg(this.props.thumblists[index]);
+  },
+  handleKeyDown: function (event) {
+    var key = event.keyCode;
+    if (key == '13') {
+      this.handleClick();
+    }
+  }
+});
+
 //create Gallery component
 var Gallery = React.createClass({
   getInitialState: function () {
@@ -151,6 +174,7 @@ var Gallery = React.createClass({
   render: function () {
     return (
       <main>
+        <Search titles={this.state.titles} changeCurrentImg={this.changeCurrentImg} thumblists={this.state.thumblists}/>
         <MainPicture currentImg={this.state.currentImg} titles={this.state.titles} descriptions={this.state.descriptions} thumblists={this.state.thumblists} changeCurrentImg={this.changeCurrentImg} />
         <ThumbNail thumblists={this.state.thumblists} changeCurrentImg={this.changeCurrentImg} currentImg={this.state.currentImg} />
       </main>
@@ -164,6 +188,6 @@ var Gallery = React.createClass({
 });
 
 ReactDOM.render(
-  <Gallery />,
+  <Gallery/>,
   document.getElementsByClassName('gallery')[0]
 );
