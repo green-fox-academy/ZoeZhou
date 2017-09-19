@@ -5,10 +5,33 @@ var ReactDOM = require('react-dom');
 var MainPicture = React.createClass({
   render: function () {
     return (
-      <img src={this.props.src} alt="no picture" />
+      <div className="main-picture">
+        <Button className='prev-btn' currentImg={this.props.currentImg} thumblists={this.props.thumblists} changeCurrentImg={this.props.changeCurrentImg} />
+        <img src={this.props.currentImg} alt="no picture" />
+        <Description titles={this.props.titles} descriptions={this.props.descriptions} currentImg={this.props.currentImg} thumblists={this.props.thumblists} />
+        <Button className='next-btn' currentImg={this.props.currentImg} thumblists={this.props.thumblists} changeCurrentImg={this.props.changeCurrentImg} />
+      </div>
     );
   }
 });
+
+//create Description component
+var Description = React.createClass({
+  render: function() {
+    var thumblists = this.props.thumblists;
+    var currentImg = this.props.currentImg;
+    var titles = this.props.titles;
+    var descriptions = this.props.descriptions;
+    var index = thumblists.indexOf(currentImg);
+    return (
+      <div className="description-container">
+        <span className='title'>{titles[index]}</span>
+        <p className='description'>{descriptions[index]}</p>
+      </div>
+    );
+  }
+})
+
 
 // create Thumb-nail component
 var ThumbNail = React.createClass({
@@ -17,11 +40,11 @@ var ThumbNail = React.createClass({
     thumblists = thumblists.map(function (item, index) {
       if (item === this.props.currentImg) {
         return (
-          <ThumbCurrent src={item} key={index} changeCurrentImg={this.props.changeCurrentImg} />
+          <ThumbCurrent ThumbCurrent={item} key={index} changeCurrentImg={this.props.changeCurrentImg} />
         );
       } else {
         return (
-          <ThumbItem src={item} key={index} changeCurrentImg={this.props.changeCurrentImg} />
+          <ThumbItem ThumbCurrent={item} key={index} changeCurrentImg={this.props.changeCurrentImg} />
         );
       }
     }.bind(this));
@@ -37,13 +60,16 @@ var ThumbNail = React.createClass({
 var ThumbItem = React.createClass({
   render: function () {
     return (
-      <div>
-        <img src={this.props.src} alt="" onClick={this.handleClick} className="active" />
+      <div onMouseOver={this.handleMouseOver}>
+        <img src={this.props.ThumbCurrent} alt="" onClick={this.handleClick} className="active" />
       </div>
     );
   },
   handleClick: function () {
-    this.props.changeCurrentImg(this.props.src);
+    this.props.changeCurrentImg(this.props.ThumbCurrent);
+  },
+  handleMouseOver: function () {
+    console.log(1);
   }
 });
 
@@ -52,13 +78,13 @@ var ThumbCurrent = React.createClass({
   render: function () {
     return (
       <div>
-        <img src={this.props.src} alt="" onClick={this.handleClick} className="active" />
+        <img src={this.props.ThumbCurrent} alt="" onClick={this.handleClick} className="active" />
         <span></span>
       </div>
     );
   },
   handleClick: function () {
-    this.props.changeCurrentImg(this.props.src);
+    this.props.changeCurrentImg(this.props.ThumbCurrent);
   }
 });
 
@@ -102,17 +128,30 @@ var Gallery = React.createClass({
         '../imgs/04.jpg',
         '../imgs/05.jpg',
         '../imgs/06.jpg'
+      ],
+      titles: [
+        'title1',
+        'title2',
+        'title3',
+        'title4',
+        'title5',
+        'title6',
+      ],
+      descriptions: [
+        'In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.',
+        `Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl."
+        "Praesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.`,
+        `Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.`,
+        `"In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.`,
+        `Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.`,
+        `Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc.`
       ]
     }
   },
   render: function () {
     return (
       <main>
-        <div className="main-picture">
-          <Button className='prev-btn' currentImg={this.state.currentImg} thumblists={this.state.thumblists} changeCurrentImg={this.changeCurrentImg} />
-          <MainPicture src={this.state.currentImg} />
-          <Button className='next-btn' currentImg={this.state.currentImg} thumblists={this.state.thumblists} changeCurrentImg={this.changeCurrentImg} />
-        </div>
+        <MainPicture currentImg={this.state.currentImg} titles={this.state.titles} descriptions={this.state.descriptions} thumblists={this.state.thumblists} changeCurrentImg={this.changeCurrentImg} />
         <ThumbNail thumblists={this.state.thumblists} changeCurrentImg={this.changeCurrentImg} currentImg={this.state.currentImg} />
       </main>
     );

@@ -11,6 +11,7 @@ main {
 .main-picture {
     height: 300px;
     width: 600px;
+    position: relative;
     margin: 0 auto;
 }
 
@@ -52,6 +53,7 @@ button.next-btn {
 .thumb-nail>div {
     width: 100px;
     display: inline-block;
+    cursor: pointer;
     position: relative;
     margin: 20px 10px 0 0;
 }
@@ -74,4 +76,21 @@ img.active+span {
     border-top: 10px solid transparent;
     border-right: 10px solid transparent;
     border-left: 10px solid transparent;
+}
+
+.description-container {
+  position: absolute;
+  bottom: 0;
+  min-height: 100px;
+  max-height: 100px;
+  width: 500px;
+  margin-left: 50px;
+  color: #fff;
+  font-size: 15px;
+  padding: 20px 10px;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.description-container .title {
+  font-size: 25px;
 }
