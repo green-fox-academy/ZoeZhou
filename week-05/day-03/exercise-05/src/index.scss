@@ -1,0 +1,13 @@
+@mixin apply-to-ie6-only {
+  * html {
+    @content;
+  }
+    @content;
+}
+@include apply-to-ie6-only {
+  #logo {
+    background-image: url('./ghost.png');
+    width: 130px;
+    height: 130px;
+  }
+}

@@ -56,6 +56,8 @@ button.next-btn {
     cursor: pointer;
     position: relative;
     margin: 20px 10px 0 0;
+    background-color: #fff;
+    padding: 5px;
 }
 
 .thumb-nail img {
@@ -89,7 +91,7 @@ button.next-btn {
     position: absolute;
     z-index: 2;
     left: 50%;
-    bottom: 70px;
+    bottom: 80px;
     margin-left: -8px;
     width: 0;
     height: 0;
@@ -103,7 +105,7 @@ img.active+span {
     content: '';
     position: absolute;
     left: 50%;
-    bottom: 75px;
+    bottom: 85px;
     margin-left: -10px;
     width: 0;
     height: 0;
