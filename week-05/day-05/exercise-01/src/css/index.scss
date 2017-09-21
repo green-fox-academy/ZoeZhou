@@ -1,0 +1,150 @@
+$basecolor: #3CB878;
+$basefont: 'Work Sans',
+sans-serif;
+$headerColor: #215584;
+* {
+    margin: 0;
+    padding: 0;
+    font-family: $basefont;
+    list-style: none;
+}
+
+header {
+    padding: 5px 20px;
+    background-color: $headerColor;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    position: relative;
+    left: -20px;
+    top: -20px;
+    a {
+        text-decoration: none;
+        margin: 0 3px;
+        background: yellow;
+        padding: 5px;
+    }
+}
+
+main {
+    background-color: $basecolor;
+    padding: 10px 20px 30px 20px;
+    width: 580px;
+    height: 580px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.search-area {
+    .repository-name {
+        font-size: 25px;
+    }
+    .search-input {
+        height: 30px;
+        vertical-align: middle;
+        width: 305px;
+        font-size: 20px;
+        margin: 0 5px;
+        box-sizing: border-box;
+        border: none;
+        border-bottom: 1px solid #555;
+        outline: none;
+        background: $basecolor;
+    }
+    .search {
+        font-size: 24px;
+        width: 50px;
+        height: 30px;
+        vertical-align: middle;
+        border: 1px solid #555;
+        cursor: pointer;
+    }
+    .search:hover {
+        background-color: $headerColor;
+    }
+}
+
+.container {
+    float: left;
+    margin: 20px 0;
+    h3 {
+        margin-bottom: 20px;
+    }
+    input {
+        display: block;
+    }
+}
+
+.materials,
+.commits {
+    width: 375px;
+    margin-right: 20px;
+    h3 {
+        font-weight: normal;
+        background-color: yellow;
+        width: fit-content;
+    }
+    li {
+        margin: 10px 0;
+        span {
+            display: block;
+        }
+    }
+    .title {
+        font-size: 15px;
+        font-weight: bold;
+    }
+}
+
+.authenticate,
+.recommended {
+    margin-right: 0;
+    width: 180px;
+    h3 {
+        font-weight: normal;
+        border-bottom: 2px solid #333;
+    }
+    li {
+        text-align: right;
+    }
+    input {
+        width: 100%;
+        margin: 10px 0;
+        border: none;
+        border-bottom: 1px solid #333;
+        background-color: $basecolor;
+        outline: none;
+    }
+    .login {
+        outline: none;
+        padding: 5px 10px;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        background-color: $headerColor;
+    }
+}
+
+.modify-time {
+    font-style: italic;
+    font-size: 14px;
+    color: #775252;
+}
+
+.message-error {
+    width: 300px;
+    height: 200px;
+    line-height: 200px;
+    text-align: center;
+    background-color: cyan;
+    color: red;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -100px 0 0 -150px;
+}
