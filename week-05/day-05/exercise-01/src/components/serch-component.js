@@ -29,14 +29,25 @@ var SearchComponent = React.createClass({
   },
   grabData: function (repositoryName) {
     var _this = this;
-    fetch(`${HOST + repositoryName}`).then(function (response) {
+    var myHeaders = new Headers({
+      "Authorization": "Basic Wm9lQ046MWI0NTgxZWIwZjdlYjMyNjQ3ZmI3MjhjNGVlOTljZTJiY2Q0ODgwZA=="
+    });
+    var myInit = {
+      method: 'GET',
+      headers: myHeaders
+    };
+    fetch(`${HOST + repositoryName}`, myInit).then(function (response) {
       if(response.status === 404){
         throw new Error('404 NOT FOUND');
       }
       return response.json();
     }).then(function (value) {
-      var fetchData = value.name;
-      _this.props.changeData(fetchData);
+      var newName = value.name;
+      var newDescription = value.description;
+      var newLastUpdate = value.pushed_at;
+      _this.props.changeData(newName);
+      _this.props.changeDescription(newDescription);
+      _this.props.changeLastUpdate(newLastUpdate);
     })
     .catch(error=>{this.props.changeFindState(false);return;}) 
   },

@@ -3,7 +3,7 @@ const HOST = 'https://api.github.com/repos/greenfox-academy/';
 
 var CommitListsComponent = React.createClass({
   componentDidMount: function () {
-    this.grabData();
+    // this.grabData();
   },
   render: function () {
     return (
@@ -21,11 +21,20 @@ var CommitListsComponent = React.createClass({
   },
   grabData: function () {
     var _this = this;
-    fetch( HOST + 'ZoeZhou').then(function (response) {
+    var myHeaders = new Headers({
+      "Authorization": "Basic Wm9lQ046MWI0NTgxZWIwZjdlYjMyNjQ3ZmI3MjhjNGVlOTljZTJiY2Q0ODgwZA=="
+    });
+    var myInit = {
+      method: 'GET',
+      headers: myHeaders
+    };
+    fetch(HOST + 'ZoeZhou', myInit).then(function (response) {
       return response.json();
     }).then(function (value) {
-      var fetchData = value.name;
-      _this.props.changeData(fetchData);
+      var newName = value.name;
+      var newDescription = value.description;
+      _this.props.changeData(newName);
+      _this.props.changeDescription(newDescription);
     })
   }
 });
