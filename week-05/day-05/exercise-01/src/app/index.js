@@ -28,11 +28,17 @@ var GithubLookupComponent = React.createClass({
     return (
       <div>
         <NavigationComponent />
-        <SearchComponent data={this.state.repositoryName} description={this.state.description} changeData={this.changeData} find={this.state.find} changeFindState={this.changeFindState} changeDescription={this.changeDescription} changeLastUpdate={this.changeLastUpdate}/>
+        <SearchComponent data={this.state.repositoryName} description={this.state.description} 
+          changeData={this.changeData} find={this.state.find} changeFindState={this.changeFindState} 
+          changeDescription={this.changeDescription} changeLastUpdate={this.changeLastUpdate}
+          changeSubmits={this.changeSubmits}/>
         <RepositoryOverviewComponent lastupdate={this.state.lastupdate} commitMessages={this.state.commitMessages} repositoryName={this.state.repositoryName} description={this.state.description} changeData={this.changeData} />
         <LoginComponent />
-        <CommitListsComponent data={this.state.repositoryName} changeData={this.changeData} changeDescription={this.changeDescription} />
-        <RecommendedComponent changeRepository={this.changeRepository}/>
+        <CommitListsComponent data={this.state.repositoryName} changeData={this.changeData} 
+          changeDescription={this.changeDescription} 
+          commitMessages={this.state.commitMessages}/>
+        <RecommendedComponent changeRepository={this.changeRepository} changeSubmits={this.changeSubmits}
+          name={this.state.repositoryName}/>
         <div className="message-error" style={notFoundStyle}>sorry, 404 Not Found...</div>
       </div>
     );
@@ -87,10 +93,11 @@ var GithubLookupComponent = React.createClass({
     })
     .catch(error=>{this.props.changeFindState(false);return;}) 
   },
-  grabSubmit: function () {
-
+  changeSubmits: function (newMessages) {
+    this.setState({
+      commitMessages: newMessages
+    })
   }
 });
 
 ReactDOM.render(<GithubLookupComponent />, document.querySelector("main"));
-//https://api.github.com/users/ZoeCN/repos

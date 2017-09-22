@@ -2,40 +2,25 @@ var React = require('react');
 const HOST = 'https://api.github.com/repos/greenfox-academy/';
 
 var CommitListsComponent = React.createClass({
-  componentDidMount: function () {
-    // this.grabData();
-  },
   render: function () {
+    var commitMessages = this.props.commitMessages || [];
+    if(commitMessages.message !== 'Not Found' ) {
+      var lists = commitMessages.map((item, index) =>{
+        if(index < 6) {
+          return (
+            <li key={index}><span className="title">{item.commit.message}</span><span className="modify-time">{item.commit.author.name} modified at ${item.commit.author.date}</span></li>
+          );
+        }
+      })
+    } 
     return (
       <div className="commits container">
-        <h3>Commits <span>(2760)</span></h3>
+        <h3>Commits <span>({commitMessages.length})</span></h3>
         <ul>
-          <li><span className="title">{this.props.data} fix add dwadaw in it</span><span className="modify-time">zoe 2017/12/12 19:21</span></li>
-          <li><span className="title">fix add dwadaw in it</span><span className="modify-time">zoe 2017/12/12 19:21</span></li>
-          <li><span className="title">fix add dwadaw in it</span><span className="modify-time">zoe 2017/12/12 19:21</span></li>
-          <li><span className="title">fix add dwadaw in it</span><span className="modify-time">zoe 2017/12/12 19:21</span></li>
-          <li><span className="title">fix add dwadaw in it</span><span className="modify-time">zoe 2017/12/12 19:21</span></li>
+          {lists}
         </ul>
       </div>
     );
-  },
-  grabData: function () {
-    var _this = this;
-    var myHeaders = new Headers({
-      "Authorization": "Basic Wm9lQ046MWI0NTgxZWIwZjdlYjMyNjQ3ZmI3MjhjNGVlOTljZTJiY2Q0ODgwZA=="
-    });
-    var myInit = {
-      method: 'GET',
-      headers: myHeaders
-    };
-    fetch(HOST + 'ZoeZhou', myInit).then(function (response) {
-      return response.json();
-    }).then(function (value) {
-      var newName = value.name;
-      var newDescription = value.description;
-      _this.props.changeData(newName);
-      _this.props.changeDescription(newDescription);
-    })
   }
 });
 

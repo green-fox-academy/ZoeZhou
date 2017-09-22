@@ -14,9 +14,9 @@ var RecommendedComponent = React.createClass({
   },
   render: function () {
     var datas = this.state.data;
-    var recommendeds = datas.map((item,index) => {
+    var recommendeds = datas.map((item, index) => {
       return (
-        <li key={index} onClick={()=>this.clickhander(item)} name={item}>{item}</li>
+        <li key={index} onClick={() => this.clickhander(item)} name={item}>{item}</li>
       );
     })
     return (
@@ -54,7 +54,24 @@ var RecommendedComponent = React.createClass({
   },
   clickhander: function (name) {
     this.props.changeRepository(name);
-  }
+    this.updateCommit(name);
+  },
+  updateCommit: function (repositoryName) {
+    var _this = this;
+    var url = 'https://api.github.com/repos/greenfox-academy/';
+    var myHeaders = new Headers({
+      "Authorization": "Basic Wm9lQ046MWI0NTgxZWIwZjdlYjMyNjQ3ZmI3MjhjNGVlOTljZTJiY2Q0ODgwZA=="
+    });
+    var myInit = {
+      method: 'GET',
+      headers: myHeaders
+    };
+    fetch(url + repositoryName + '/commits', myInit).then(function (response) {
+      return response.json();
+    }).then(function (value) {
+      _this.props.changeSubmits(value);
+    })
+  },
 });
 
 module.exports = RecommendedComponent;

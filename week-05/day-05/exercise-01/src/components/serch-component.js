@@ -19,6 +19,7 @@ var SearchComponent = React.createClass({
         throw new Error('input error');
       } else {
         this.grabData(repositoryName);
+        this.updateCommit(repositoryName);
         inputElement.value = '';
       }
     }
@@ -50,6 +51,22 @@ var SearchComponent = React.createClass({
       _this.props.changeLastUpdate(newLastUpdate);
     })
     .catch(error=>{this.props.changeFindState(false);return;}) 
+  },
+  updateCommit: function (repositoryName) {
+    var _this = this;
+    var url = 'https://api.github.com/repos/greenfox-academy/';
+    var myHeaders = new Headers({
+      "Authorization": "Basic Wm9lQ046MWI0NTgxZWIwZjdlYjMyNjQ3ZmI3MjhjNGVlOTljZTJiY2Q0ODgwZA=="
+    });
+    var myInit = {
+      method: 'GET',
+      headers: myHeaders
+    };
+    fetch(url + repositoryName + '/commits', myInit).then(function (response) {
+      return response.json();
+    }).then(function (value) {
+      _this.props.changeSubmits(value);
+    })
   },
   clearBorder: function () {
     var inputElement = document.getElementsByClassName('search-input')[0];
