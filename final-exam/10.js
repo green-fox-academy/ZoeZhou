@@ -7,6 +7,7 @@ function countAverageOfEvenNumbers(array) {
   }
   let sum = 0;
   let evenNums = 0;
+
   for(let i = 0; i < array.length; i++) {
     if (array[i] % 2 === 0) {
       evenNums++;
@@ -20,4 +21,5 @@ function countAverageOfEvenNumbers(array) {
 }
 
 let testArray = [1,2,3,4];
+
 console.log(countAverageOfEvenNumbers(testArray), 'should be 3');
